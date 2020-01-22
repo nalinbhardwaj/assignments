@@ -1,0 +1,230 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 2}
+\newcommand{\hmwkClass}{MATH 109}
+\newcommand{\hmwkClassInstructor}{Professor Rabin}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Problem 2.2}
+	\begin{enumerate}[(a)]
+		\item True.
+		\item False, $33$ is not a Fibonacci number.
+		\item False, $22 \in A \implies 22 \in A \cup D$.
+		\item True.
+		\item False, $\phi \notin B$ and $\phi \notin D$.	
+		\item False, $53$ is prime and $53 \neq 2$.
+	\end{enumerate}
+
+\section*{Problem 2.13}
+	\begin{enumerate}[(a)]
+		\item The real number $r$ is greater than $\sqrt{2}$.
+		\item The absolute value of the real number $a$ is greater than or equal to $3$.
+		\item At least two angles of the triangle are not $45 \degree$.
+		\item The area of the circle is less than $9\pi$.
+		\item All sides of the triangle have different length.
+		\item The point P in the plane on or inside of the circle C.
+	\end{enumerate}
+
+\section*{Problem 2.20}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+$P$ & $Q$ & $P \implies Q$ & $\sim P$ & $(P \implies Q) \implies (\sim P)$ \\ \hline
+T & T & T                           & F       & F                                                               \\ \hline
+T & F & F                           & F       & T                                                               \\ \hline
+F & T & T                           & T       & T                                                               \\ \hline
+F & F & T                           & T       & T                                                               \\ \hline
+\end{tabular}
+
+\section*{Problem 2.22}
+	\begin{enumerate}[(a)]
+		\item If $\sqrt{2}$ is rational and $\frac{2}{3}$ is rational, then $\sqrt{3}$ is rational.
+		
+			Since $(P \wedge Q)$ is false and $R$ is false, $(P \wedge Q) \implies R$ is {\bf true}.
+		\item If $\sqrt{2}$ is rational and $\frac{2}{3}$ is rational, then $\sqrt{3}$ is not rational.
+		
+			Since $(P \wedge Q)$ is false and $\sim R$ is true, $(P \wedge Q) \implies \sim R$ is {\bf true}.
+		\item If $\sqrt{2}$ is not rational and $\frac{2}{3}$ is rational, then $\sqrt{3}$ is rational.
+		
+			Since $((\sim P) \wedge Q)$ is true and $R$ is false, $((\sim P) \wedge Q) \implies R$ is {\bf false}.
+		\item If $\sqrt{2}$ is rational or $\frac{2}{3}$ is rational, then $\sqrt{3}$ is not rational.
+		
+			Since $(P \vee Q)$ is true and $\sim R$ is true, $(P \vee Q) \implies \sim R$ is {\bf true}.
+	\end{enumerate}
+
+\section*{Problem 2.24}
+	\begin{enumerate}[(a)]
+		\item False
+		\item True
+		\item False
+		\item True
+		\item False
+		\item True
+	\end{enumerate}
+
+\section*{Problem 2.32}
+	\begin{enumerate}[(a)]
+		\item Let us consider the truth value of $P(x)$.
+		
+		$P(x)$ is only true for $x = 7$. However, $Q(7): 7 \geq 8$ is false. Therefore, $P(7) \implies Q(7)$ is {\bf false}.
+		
+		For all other $x \in S \mid x \neq 7$, $P(x)$ is false. Therefore, $P(x) \implies Q(x) \quad \forall x \in S \mid x \neq 7$ is {\bf true}.
+		
+		Therefore, $P(x) \implies Q(x)$ is {\bf true} $\forall x \in S \mid x \neq 7$.
+		
+		\item Let us consider the truth value of $P(x)$.
+		
+		For $P(x)$ to be true, $x^2 \geq 1 \implies x \geq 1$ or $x \leq -1$.
+		
+		For the case $x \geq 1$, $P(x)$ is true and $Q(x): x \geq 1$ is also true. Therefore, for $x \in [1, \infty)$, $P(x) \implies Q(x)$ is {\bf true}.
+		
+		Alternately, $x \leq -1$, in which case, $Q(x): x \geq 1$ is false. Therefore, for $x \in (-\infty, -1]$, $P(x) \implies Q(x)$ is {\bf false}.
+		
+		For $x \in (-1, 1)$, $P(x)$ is false. Therefore, $P(x) \implies Q(x)$ is {\bf true}.
+		
+		Therefore, $P(x) \implies Q(x)$ is {\bf true} $\forall x \in (-1, \infty)$.
+		
+		\item Note that $P(x)$ and $Q(x)$ are the same as (b), only $S = \mathbb{N}$ is different. Therefore, we only need to consider the case where $x$ is a whole number $\geq 1$.
+		
+		As before, for $x \geq 1$, $P(x)$ is true and $Q(x): x \geq 1$ is also true. Therefore, for $x \in [1, \infty)$, $P(x) \implies Q(x)$ is {\bf true}.
+		
+		Therefore, $P(x) \implies Q(x) \quad \forall x \in S$.
+		
+		\item Since $S = [-1, 1] \subseteq [-1, 2]$, $P(x): x \in [-1, 2]$ is {\bf true} $\forall x \in S$, let us consider the truth value of $Q(x)$.
+		
+		$Q(x): x^2 \leq 2$ is true when $x \leq \sqrt{2}$ or $x \geq -\sqrt{2}$. Since $S \subseteq [-\sqrt{2}, \sqrt{2}]$, $Q(x): x^2 \leq 2$ is {\bf true} $\forall x \in S$.
+		
+		Therefore, $P(x) \implies Q(x) \quad \forall x \in S$.
+	\end{enumerate}
+
+\section*{Problem 2.42}
+	Let $P(n):$ The integer $\frac{n\cdot(n-1)}{2}$ is odd.
+	
+	Let $Q(n):$ $\frac{n\cdot(n+1)}{2}$ is even.
+	
+	$P(n) \iff Q(n)$ when either both are {\bf true} or both are {\bf false}. \\
+	
+	For $n = 2$, $P(2): \frac{2\cdot(1)}{2} = 1$ is odd, which is {\bf true} and $Q(2): \frac{2\cdot(3)}{2} = 3$ is even, which is {\bf false}. Therefore, $P(2) \iff Q(2)$ is {\bf false}.
+
+	For $n = 3$, $P(3): \frac{3\cdot(2)}{2} = 3$ is odd, which is {\bf true} and $Q(3): \frac{3\cdot(4)}{2} = 6$ is even, which is {\bf true}. Therefore, $P(3) \iff Q(3)$ is {\bf true}.
+
+	For $n = 4$, $P(4): \frac{4\cdot(3)}{2} = 6$ is odd, which is {\bf false} and $Q(4): \frac{4\cdot(5)}{2} = 10$ is even, which is {\bf true}. Therefore, $P(4) \iff Q(4)$ is {\bf false}.
+
+\section*{Problem 2.56}
+	\begin{tabular}{|l|l|l|l|l|l|}
+	\hline
+	$P$ & $Q$ & $\sim P$ & $\sim Q$ & $P \wedge (\sim P)$ & $\sim Q \implies (P \wedge (\sim P)) $ \\ \hline
+	T & T & F       & F       & F                               & T                                                                 \\ \hline
+	T & F & F       & T       & F                               & F                                                                 \\ \hline
+	F & T & T       & F       & F                               & T                                                                 \\ \hline
+	F & F & T       & T       & F                               & F                                                                 \\ \hline
+	\end{tabular} \\
+
+	Since the truth values of $Q$ and $(\sim Q) \implies (P \wedge (\sim P)) $ are equal for all possible truth values of $P$ and $Q$, $Q$ and $(\sim Q) \implies (P \wedge (\sim P)) $ are logically equivalent.
+	
+\section*{Problem 2.62}
+	\begin{enumerate}[(a)]
+		\item $x$ and $y$ are even only if $xy$ is even. 
+		\item If $xy$ is even, $x$ and $y$ are even. 
+		\item Either $x$ and $y$ are not even, or $xy$ is even.
+		\item $x$ and $y$ are even and $xy$ is not even.
+	\end{enumerate}
+
+
+\end{document}
