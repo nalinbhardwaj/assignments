@@ -1,0 +1,213 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 5}
+\newcommand{\hmwkClass}{MATH 109}
+\newcommand{\hmwkClassInstructor}{Professor Rabin}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Problem 4.43}
+	\begin{enumerate}[(a)]
+		\item $A = \{1, 2\}, B = \{1, 4\}, C = \{1, 5\}$
+		\item $A = \{1\}, B = \{2\}, C = \{1, 2\}$
+		\item
+		
+		Let $x \in B$. Two cases arise:
+		
+		\subsection*{Case 1: $x \in A$}
+			Then $x \in A \cap B \implies x \in A \cap C \implies x \in A$ and $x \in C \implies x \in C$.
+		
+		\subsection*{Case 2: $x \notin A$}
+			Then $x \in A \cup B \implies x \in A \cup C \implies x \in A$ or $x \in C \implies x \in C$.
+	
+		Therefore, $B \subseteq C$.
+		
+		Similarly, WLOG, let $x \in C$. Therefore, $C \subseteq B$.
+		
+		Therefore, $B = C$.
+	\end{enumerate}
+
+\section*{Problem 4.48}
+	$A = \{n \in \mathbb{Z} : 2 | n \}, B = \{n \in \mathbb{Z} : 4 | n\}$
+	
+	\subsection*{Part 1: If $n \neq 2k$ for some odd integer k, then $n \notin A-B$}
+		Case 1: $n = 2k+1$ for some $k \in \mathbb{Z}$.
+		
+		Then, $n \notin A \implies n \notin A-B$
+
+		Case 2: $n = 2k$ for some even $k \in \mathbb{Z}$.
+		
+		Then, $k = 2l$ and $n = 4l$ for some $l \in \mathbb{Z}$.
+		
+		Therefore, $n \in A$ and $n \in B \implies n \notin A-B$.
+		
+	\subsection*{Part 2: If $n = 2k$ for some odd k, then $n \in A-B$}
+		$k = 2l+1$ for some $l \in \mathbb{Z}$.
+		Therefore, $n = 2(2l+1) \implies n = 4l+2$
+		
+		Since $2 | 2(2l+1)$, $2 | n \implies n \in A$ and $4 \not| 4l+2 \implies n \notin B$. Therefore, $n \notin A-B$.
+
+\section*{Problem 4.56}
+	Let $x \in (A-B) \cup (A-C)$.
+	
+	WLOG, let $x \in (A-B)$. $x \in (A-B) \implies x \in A$ and $x \notin B \implies x \notin B \cap C \implies x \in A - (B \cap C)$.
+	
+	Therefore, $(A-B) \cup (A-C) \subseteq A - (B \cap C)$.
+	
+	Let $x \in A - (B \cap C)$. Therefore, $x \in A$ and $x \notin B \cap C$.
+	
+	WLOG, let $x \notin B$. $x \notin B \implies x \in A-B \implies x \in (A-B) \cup (A-C)$.
+	
+	Therefore, $A - (B \cap C) \subseteq (A-B) \cup (A - C)$.
+	
+	Therefore, $A - (B \cap C) = (A-B) \cup (A - C)$.
+	
+\section*{Problem 5.4}
+	Let $n = 2$. $\frac{n(n+1)}{2} = 3$ and $\frac{(n+1)(n+2)}{2} = 6$. $3$ is odd, but $6$ is not odd. Hence, the implication is false.
+
+\section*{Problem 5.15}
+	Let $a$ and $b$ be odd integers such that $4 | a^2+b^2$.
+	
+	Let $a^2+b^2 = 4k_1, a = 2k_2+1, b = 2k_3+1$ for some $k_1,k_2,k_3 \in \mathbb{Z}$.
+	
+	$(2k_2+1)^2+(2k_3+1)^2 = 4k_1 \implies 4(k_2^2+k_2+k_3^2+k_3) + 2 = 4k_1 \implies 2 = 4(k_1-k_2^2-k_2+k_3^2+k_3)$.
+	
+	Since $k_1-k_2^2-k_2+k_3^2+k_3 \in \mathbb{Z}$, we proved $4 | 2$, which is a contradiction.
+	
+\section*{Problem 5.18}
+	Let the irrational number be $k_1$ and the rational number be $\frac{p}{q}$ such that $q \neq 0$.
+	
+	Since $\frac{p}{q} \neq 0 \implies p \neq 0$.
+	
+	Let product $k_2$ be a rational number.
+	
+	Then, $k_2 = \frac{k_1p}{q}$. Since $p \neq 0$, $k_1 = \frac{k_2q}{p}$. Since $\frac{k_2q}{p}$ is rational, we have shown that $k_1$ is rational, which is a contradiction.
+
+\section*{Problem 5.20}
+	Let both $ar+s$ and $ar-s$ be rational.
+	
+	Then, $ar+s = \frac{k_1}{k_2}$ for $k_2 \neq 0$ and $ar-s = \frac{k_3}{k_4}$ for $k_4 \neq 0$.
+	
+	Adding, $2ar = \frac{k_1}{k_2}+\frac{k_3}{k_4} \implies a = \frac{k_1k_4+k_2k_3}{2rk_2k_4}$. Thus, we have shown that $a$ is rational, which is a contradiction.
+	
+\section*{Problem 5.22}
+	Let $\sqrt{2}+\sqrt{3}$ be rational.
+	
+	Then, $\sqrt{2} + \sqrt{3} = \frac{p}{q}$ for $q \neq 0$. Further, since $\sqrt{2} + \sqrt{3} > 0, p \neq 0$.
+
+\begin{eqnarray*}
+	2 = (\frac{p}{q} - \sqrt{3})^2 \\
+	2 = \frac{p^2}{q^2} + 3 - \frac{2\sqrt{3}p}{q} \\
+	\frac{p^2}{q^2} + 1 = \frac{2\sqrt{3}p}{q} \\
+	\sqrt{3} = \frac{p^2+1}{2pq}, 2pq \neq 0 \\
+\end{eqnarray*}
+
+By the result of exercise 5.21, we know that $\sqrt{3}$ is irrational. However, we have shown that $\sqrt{3}$ is rational, which is a contradiction.
+
+\section*{Problem 5.34}
+	Let $n$ and $m \in \mathbb{Z^+}$ such that $m^2+m+1=n^2$.
+	
+	Since for any positive integer $a$, $\sqrt{a} < a$,  $\sqrt{m^2+m+1} < m^2+m+1 \implies n < m^2+m+1$.
+	
+	$n^2 - m^2 = m+1$. $m+1 > 0 \implies n^2-m^2 > 0 \implies n^2 > m^2 \implies n > m$.
+	
+	
+
+\end{document}

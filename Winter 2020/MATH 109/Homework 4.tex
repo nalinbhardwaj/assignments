@@ -1,0 +1,209 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 3}
+\newcommand{\hmwkClass}{MATH 109}
+\newcommand{\hmwkClassInstructor}{Professor Rabin}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Problem 3.64}
+	To prove: For $a, b \in \mathbb{Z}$, if $ab = 4$, then $(a-b)^3 - 9(a-b) = 0$
+
+	\subsection*{Lemma 1: If $a-b = 0$ or $(a-b)^2-9 = 0$, then $(a-b)^3-9(a-b) = 0$}
+		If $a-b = 0$ or $(a-b)^2-9 = 0$, then $(a-b)((a-b)^2-9) = 0$.
+		
+		Then, $(a-b)^3 - 9(a-b) = 0$.
+	
+	\subsection*{Proof}
+		If $a, b \in \mathbb{Z}$ and $ab = 4$, then the following cases arise:
+	\begin{enumerate}
+		\item $a = 1, b = 4$: $(1-4)^2-9 = 0 \implies (a-b)^2 - 9 = 0$
+		\item $a = 2, b = 2$: $(2 - 2) = 0 \implies a-b = 0$
+		\item $a = 4, b = 1$: $(4-1)^2-9 = 0 \implies (a-b)^2 - 9 = 0$
+		\item $a = -1, b = -4$: $(-1+4)^2-9 = 0 \implies (a-b)^2 - 9 = 0$
+		\item $a = -2, b = -2$: $(-2 + 2) = 0 \implies a-b = 0$
+		\item $a = -4, b = -1$: $(4-1)^2-9 = 0 \implies (a-b)^2 - 9 = 0$
+	\end{enumerate}
+	
+	In all cases, either $a-b = 0$ or $(a-b)^2-9 = 0$. Therefore, using Lemma 1, $(a-b)^3-9(a-b) = 0$.
+
+\section*{Problem 3.68}
+	To prove: For $n \in \mathbb{N}$, If $n^3 - 5n - 10 > 0$, then $n \geq 3$.
+	
+	Contrapositive: If $n < 3$, then $n^3 - 5n - 10 \leq 0$.
+	
+	Since $n \in \mathbb{N}$, $1 \leq n \leq 2$.
+	
+	Therefore, $n^3 \leq 8$ and $3 \leq n+2 \leq 4 \implies 15 \leq 5(n+2) \leq 20$.
+	
+	Therefore, $n^3 \leq 8 \leq 15 \leq 5(n+2) \implies n^3 \leq 5(n+2) \implies n^3-5(n+2) \leq 0 \implies n^3 - 5n - 10 \leq 0$.
+	
+\section*{Problem 3.74}
+	To prove: For $a, b, c \in \mathbb{Z}$, if $a^2+b^2 = c^2$, then $abc$ is even.
+	
+	\subsection*{Lemma 1: If $x^2$ is even, then $x$ is even}
+		Contrapositive: If $x$ is odd, then $x^2$ is odd.
+		
+		Let $x = 2k+1$ for some $k \in \mathbb{Z}$.
+		
+		$x^2 = 4k^2+4k+1 = 2(2k^2+2k) + 1$. Since $2k^2+2k \in \mathbb{Z}$, $x^2$ is odd.
+	
+	
+	\subsection*{Case 1: $a$ or $b$ is even.}
+		WLOG, let $a$ be even.
+		
+		Then, $a = 2k$ for some $k \in \mathbb{Z}$.
+		
+		$abc = 2kbc = 2(kbc)$. Since $kbc \in \mathbb{Z}$, $abc$ is even.
+
+	\subsection*{Case 2: $a$ and $b$ are odd.}
+		Let $a = 2k_1+1$ and $b = 2k_2+1$ for some $k_1, k_2 \in \mathbb{Z}$.
+		
+		Then, $c^2 = a^2+b^2 = 4k_1^2+1+4k_1+4k_2^2+1+4k_2 = 2(2k_1^2+1+2k_1+2k_2^2+2k_2)$.
+		
+		Since $2k_1^2+1+2k_1+2k_2^2+2k_2 \in \mathbb{Z}$, $c^2$ is even.
+		
+		Since $c^2$ is even, using lemma 1, $c$ is even.
+		
+		Let $c = 2k$ for $k \in \mathbb{Z}$.
+		
+		$abc = ab2k = 2(abk)$. Since $abk \in \mathbb{Z}$, $abc$ is even.
+		
+\section*{Problem 4.5}
+	To prove: For $a, b, c \in \mathbb{Z}$ such that $a \neq 0$, if $a \nmid b$, then $a \nmid b$ and $a \nmid c$.
+	
+	Contrapositive: If $a \mid b$ or $a \mid c$, then $a \mid bc$.
+	
+	WLOG, let $a \mid b$.
+	
+	Then, $b = an$ for some $n \in \mathbb{Z}$.
+		
+	$bc = anc = a(nc)$. Since $nc \in \mathbb{Z}$, $a \mid bc$.
+	
+\section*{Problem 4.10}
+	\subsection*{Lemma 1: If $2 \mid n^4 - 3$, then $2 \nmid n$}
+		Contrapositive: If $2 \mid n$, then $2 \nmid n^4 - 3$.
+		
+		Let $n = 2k$ for $k \in \mathbb{Z}$.
+		
+		$n^4 - 3 = 16k^4 - 3 = 16k^4-4+1 = 2(8k^4-2)+1$. Since $8k^4-2 \in \mathbb{Z}$, $2 \nmid n^4 - 3$.
+
+	\subsection*{Lemma 2: If $4 \mid n^2 + 3$, then $2 \nmid n$}
+		Contrapositive: If $2 \mid n$, then $4 \nmid n^2 + 3$.
+		
+		Let $n = 2k$ for $k \in \mathbb{Z}$.
+		
+		$n^2 + 3 = 4k^2+3$. Since $k \in \mathbb{Z}$, $4 \nmid n^2+3$.
+	
+	\subsection*{Proof}
+		By lemma 1, if $2 \mid n^4-3$, then $2 \nmid n$.
+	
+		Then, $n = 2k+1$ for $k \in \mathbb{Z}$.
+		$n^2 + 3 = 4(k^2+k+1)$. Since $k^2+k+1 \in \mathbb{Z}$, $4 \mid n^2+3$. 
+
+		By lemma 2, if $4 \mid n^2 + 3$, then $2 \nmid n$
+	
+		Then, $n = 2k+1$ for $k \in \mathbb{Z}$.
+		$n^4 - 3 = 16 k^4 + 32 k^3 + 24 k^2 + 8 k + 2 = 2(8 k^4 + 16 k^3 + 12 k^2 + 4 k + 1)$. Since $8 k^4 + 16 k^3 + 12 k^2 + 4 k + 1 \in \mathbb{Z}$, $2 \mid n^4 - 3$.
+'
+
+
+
+\end{document}

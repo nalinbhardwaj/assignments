@@ -1,0 +1,247 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 3}
+\newcommand{\hmwkClass}{MATH 109}
+\newcommand{\hmwkClassInstructor}{Professor Rabin}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Problem 2.70}
+	\begin{enumerate}[(a)]
+		\item There exists rational number $r$, such that the number $\frac{1}{r}$ is not rational.
+		\item For every rational number $r$, $r^2 \neq 2$.
+	\end{enumerate}
+
+\section*{Problem 2.72}
+	\begin{enumerate}[(a)]
+		\item True, for $x = 0$, $0^2 - 0 = 0$.
+		\item True, since $\forall n \in \mathbb{N} \quad n \geq 1 \implies n+1 \geq 2$.
+		\item False, since for $x = -1$, $\sqrt{(-1)^2} = 1 \neq -1$.
+		\item True, for $x = 3$, $3\cdot(3)^2 - 27 = 0$ is true.
+		\item True, for $x = 5, y = 0$, $x+y+3 = 8$ is true.
+		\item False, for $x = y = 0$, $x+y+3 = 8$ is false.
+		\item True, for $x = 3, y = 0$, $x^2+y^2 = 9$ is true.
+		\item False, for $x = y = 1$, $x^2+y^2 = 9$ is false.
+	\end{enumerate}
+
+\section*{Problem 2.93a}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+	\hline
+	$P$ & $Q$ & $R$ & $(P \wedge Q)$ & $(P \wedge Q) \implies R$ & $\sim R$ & $P \wedge \sim R$ & $\sim Q$ & $P \wedge (\sim R) \implies (\sim Q)$ \\ \hline
+	T & T & T & T                           & T                                                     & F       & F                               & F       & T                                                                   \\ \hline
+	T & T & F & T                           & F                                                     & T       & T                               & F       & F                                                                   \\ \hline
+	T & F & T & F                           & T                                                     & F       & F                               & T       & T                                                                   \\ \hline
+	T & F & F & F                           & T                                                     & T       & T                               & T       & T                                                                   \\ \hline
+	F & T & T & F                           & T                                                     & F       & F                               & F       & T                                                                   \\ \hline
+	F & T & F & F                           & T                                                     & T       & F                               & F       & T                                                                   \\ \hline
+	F & F & T & F                           & T                                                     & F       & F                               & T       & T                                                                   \\ \hline
+	F & F & F & F                           & T                                                     & T       & F                               & T       & T                                                                   \\ \hline
+	\end{tabular}
+
+	Since the truth values of $(P \wedge Q) \implies R$ and $P \wedge (\sim R) \implies (\sim Q)$ are the same for all possible truth values of $P, R$ and $Q$, they are logically equivalent.
+
+\section*{Problem 2.103}
+	\begin{enumerate}[(a)]
+		\item The real number $r$ either has the property $r < 3$ or $r \geq \pi$.
+		\item There exists integer $n$ such that $|r - n| < \frac{1}{2}$ for the real number $r$.
+		\item There exists real number $s$ such that $r \cdot s \neq s$ for the real number $r$.
+	\end{enumerate}
+
+\section*{Problem 3.2}
+	To prove: If $|n - 1| + |n + 1| \leq 1$, then $|n^2 - 1| \leq 4$. \\ \\
+	
+	Proof: Let $n \in \mathbb{N}$, since $n \geq 1 \implies n - 1 \geq 0 \implies |n - 1| \geq 0$. \\
+	Similarly,  $n \geq 1 \implies n + 1 \geq 2 \implies |n + 1| \geq 2$, \\
+	Adding, $|n - 1| + |n + 1| \geq 0 + 2 \implies |n - 1| + |n + 1| \geq 2$. \\
+	Therefore, $|n - 1| + |n + 1| \leq 1$ is false $\forall n \in \mathbb{N}$ and the result follows vacuously.
+
+\section*{Problem 3.10}
+	To prove: If $a$ and $c$ are odd integers, then $a \cdot b + b \cdot c$ is even for every integer $b$. \\
+
+	Proof: Since $a$ and $c$ are odd, let $a = 2 \cdot k_1 + 1$ and $c = 2 \cdot k_2 + 1$ for some $k_1, k_2 \in \mathbb{Z}$. \\
+	\begin{eqnarray*}
+		a \cdot b + b \cdot c & = & (a + c) \cdot b \\
+		& = & (2 \cdot k_1 + 1 + 2 \cdot k_2 + 1) \cdot b \\
+		& = & 2 \cdot ((k_1 + k_2 + 1) \cdot b)
+	\end{eqnarray*}
+	Since $(k_1 + k_2 + 1) \cdot b \in \mathbb{Z}$, $a \cdot b + b \cdot c$ must be even. 
+	
+\section*{Problem 3.20}
+	To prove: For $x \in \mathbb{Z}$, $3x + 1$ is even if and only if $5x - 2$ is odd.
+
+	\subsection*{Lemma 1: If $3x + 1$ is even, then $x$ is odd.}
+		Proof by contrapositive: Let $x$ be an even integer, therefore $x = 2k$ for some $k \in \mathbb{Z}$. \\
+		Then, $3x+1$ = $2(3k) + 1$. \\
+		Since $3k \in \mathbb{Z}$, $3x+1$ is odd.
+	
+	\subsection*{Theorem 1: If $3x + 1$ is even, then $5x-2$ is odd.}
+		Using Lemma 1, $x$ must be odd. Therefore, let $x = 2k + 1$ for some $k \in \mathbb{Z}$. \\
+		Then, $5x-2 = 5(2k + 1) - 2 = 2 \cdot 5k + 3 = 2(5k + 1) + 1$. \\
+		Since $5k+1 \in \mathbb{Z}$, $5x - 2$ is odd.
+
+	\subsection*{Lemma 2: If $5x - 2$ is odd, then $x$ is odd.}
+		Proof by contrapositive: Let $x$ be an even integer, $x = 2k$ for some $k \in \mathbb{Z}$. \\
+		Then, $5\cdot2k - 2 = 2(5k - 1)$. \\
+		Since $5k - 1 \in \mathbb{Z}$, $5x - 2$ is even.
+
+	\subsection*{Theorem 2: If $5x - 2$ is odd, then $3x+1$ is even.}
+		Using Lemma 2, $x$ must be odd. Therefore, let $x = 2k + 1$ for some $k \in \mathbb{Z}$. \\
+		Then, $3x + 1 = 3(2k+1) + 1 = 2(3k+2)$. \\
+		Since $3k + 2 \in \mathbb{Z}$, $3x-1$ is even.
+
+\section*{Problem 3.31}
+
+	Contrapositive: If $a$ is odd or $b$ is odd, then $a + b$ and $ab$ are of different parity.
+	
+	\subsection*{Case 1}
+		WLOG, Let $a$ be odd and $b$ be even.
+		Therefore $a = 2k_1 + 1$ and $b = 2k_2$ for some $k_1,k_2 \in \mathbb{Z}$. \\
+		Then, $a + b = 2k_1 + 1 + 2k_2 = 2(k_1+k_2) + 1$. Since $k_1+k_2 \in \mathbb{Z}$, $a + b$ is odd. \\
+	 	$ab = (2k_1+1)\cdot(2k_2) = 2\cdot((2k_1 + 1) \cdot k_2)$. Since $((2k_1 + 1) \cdot k_2) \in \mathbb{Z}$, $ab$ is even. \\
+	 	Therefore, $a+b$ and $ab$ have opposite parity. \\
+	 
+	\subsection*{Case 2}
+		Let $a$ be odd and $b$ be odd.
+		Therefore $a = 2k_1 + 1$ and $b = 2k_2 + 1$ for some $k_1,k_2 \in \mathbb{Z}$. \\
+	 	Then, $a + b = 2k_1 + 1 + 2k_2 + 1 = 2(k_1+k_2+1)$. Since $k_1+k_2 + 1 \in \mathbb{Z}$, $a + b$ is even. \\
+	 	$ab = (2k_1+1)\cdot(2k_2 + 1) = 4k_1k_2 + 2(k_1+k_2) + 1 = 2(2k_1k_2 + k_1 + k_2) + 1$. Since $2k_1k_2 + k_1 + k_2 \in \mathbb{Z}$, $ab$ is odd. \\
+	 	Therefore, $a+b$ and $ab$ have opposite parity.
+
+\section*{Problem 3.36}
+
+	Contrapositive: If $x$ is odd or $y$ is odd, then $3x+4y$ is odd or $4x+5y$ is odd.
+	
+	\subsection*{Case 1}
+		Let $x$ and $y$ be odd. Therefore, $x = 2k_1 + 1$ and $y = 2k_2 + 1$ for some $k_1, k_2 \in \mathbb{Z}$. \\
+		$3x+4y = 3\cdot 2k_1 + 3 + 4\cdot 2k_2 + 4 = 2(3k_1+4k_2+3) + 1$.
+		Since $3k_1+4k_2+3 \in \mathbb{Z}$, $3x+4y$ is an odd integer and the implication is true.
+	
+	\subsection*{Case 2}
+		Let $x$ be odd and $y$ be even. Therefore, $x = 2k_1 + 1$ and $y = 2k_2$ for some $k_1, k_2 \in \mathbb{Z}$. \\
+		$3x+4y = 3\cdot 2k_1 + 3 + 4\cdot 2k_2 = 2(3k_1+4k_2+1) + 1$.
+		Since $3k_1+4k_2+1 \in \mathbb{Z}$, $3x+4y$ is an odd integer and the implication is true.
+	
+	\subsection*{Case 3}
+		Let $x$ be even and $y$ be odd. Therefore, $x = 2k_1$ and $y = 2k_2 + 1$ for some $k_1, k_2 \in \mathbb{Z}$. \\
+		$4x + 5y = 4 \cdot 2k_1 + 5 \cdot 2k_2 + 5 = 2(4k_1+5k_2+2) + 1$.
+		Since $4k_1+5k_2+2 \in \mathbb{Z}$, $4x + 5y$ is an odd integer and the implication is true.
+		
+\section*{Problem 3.42}
+	The first part proves the implication: If $x$ is even, then $3x^2 - 4x - 5$ is odd. \\
+	The second part proves: If $x$ is odd, then $3x^2 - 4x - 5$ is even. By contrapositive, this is equivalent to: If $3x^2 - 4x - 5$ is odd, $x$ is even, which is the converse of the first result. \\
+	
+	Therefore, overall result is: $x$ is even if and only if $3x^2 - 4x - 5$ is odd.
+	
+\section*{Extra Problem}
+	To prove: Every integer is either even or odd, but not both. \\
+	
+	By the fundamental theorem of arithmetic, for division by $2$ of any number, remainder on division must be $0$ or $1$. Therefore, by definition, every integer can be expressed as $2k$ or $2k+1$ for some $k \in \mathbb{Z}$.
+	
+	Now, let us prove that no integer can be both even and odd at the same time.
+	
+		Let an integer $x$ be both even and odd. Therefore, $x = 2k_1$ and $x = 2k_2 + 1$ for some $k_1,k_2 \in \mathbb{Z}$. Therefore,
+		\begin{eqnarray*}
+			2k_1 & = & 2k_2 + 1 \\
+			2 \cdot (k_1 - k_2) & = & 1 \\
+			k_1 - k_2 & = & \frac{1}{2}	
+		\end{eqnarray*}
+		
+		However, subtraction is closed in $\mathbb{Z}$. Therefore, our assumption must be false, and it is impossible for an integer to be even and odd simultaneously.
+
+\end{document}
