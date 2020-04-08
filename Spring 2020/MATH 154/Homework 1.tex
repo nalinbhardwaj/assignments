@@ -1,0 +1,174 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 1}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+
+	\begin{enumerate}[(a)]
+		\item Consider $G = (V, E)$. By definition, $E$ = multiset of unordered \textit{pairs} from $V$. Let $deg(v) = |\{e = \{x, y\} \in E : v = x$ or $v = y\}|$. Therefore, if there are multiple edges between two nodes, each of them contributes to the degree of the endpoints. Therefore, for the example in the problem statement, $2 + 2 = 2\cdot2$ holds.
+		
+			Proof: Since each edge $e = \{x, y\}$ has 2 endpoints $x$ and $y$, it is counted exactly twice in $\sum_{v \in V} deg(v)$, once in $deg(x)$ and once in $deg(y)$. Therefore, $\sum_{v \in V} deg(v) = 2\cdot|E|$.
+			
+		\item As before, consider $G = (V, E)$. By definition, $E$ = multiset of unordered \textit{multisets} of size two from $V$. Let $deg(v) = |\{e = \{x, y\} \in E : $ either $v = x$ or $v = y$ but not both$\}| + 2 \cdot |\{e = \{x, y\} \in E : v = x$ and $v = y\}|$. Therefore, all self loops on node $v$ contribute $2$ to $deg(v)$.
+		
+			Proof: Each edge $e = \{x, y\}$ s.t. $x \neq y$ (i.e. $e$ is not a self-loop) has 2 endpoints $x$ and $y$, it is counted twice in $\sum_{v \in V} deg(v)$, once in $deg(x)$ and once in $deg(y)$. Each self loop $e = \{x, x\}$ is also counted twice in $deg(x)$. Therefore, $\sum_{v \in V} deg(v) = 2\cdot|E|$.
+			
+		\item Let there exist edge $e = {x, y} \in E$ s.t $e$ points away from $x$ and towards $y$. Then, this edge is counted exactly once in $\sum_{v \in V} d_{in}(v)$, in $d_{in}(y)$. Similarly, it is counted exactly once $\sum_{v \in V} d_{out}(v)$, in $d_{out}(x)$. Therefore, $\sum_{v\in V}d_{in}(v) = |E| = \sum_{v\in V} d_{out}(v)$.
+			
+	\end{enumerate}
+
+\section*{Question 2}
+	
+	Let the graph be $G = (V, E)$. $deg(v) = $ degree of vertices $v \in V$.
+
+	\begin{enumerate}[(a)]
+		\item
+		\subsection*{Lemma 2.1: For any vertex $v \in V$, $deg(v) \geq 3$.}
+		
+			Let us assume, for the sake of contradiction, that $deg(v) < 3$. Let $E_v = $ the set of edges with $v$ as one of their endpoints. Since $deg(v) < 3 \implies |E_v| \leq 2$. So, if we remove $E_v$ from $G$, vertex $v$ is disconnected from the rest of the graph. However, the existence of $E_v$ contradicts the fact that $G$ was 3-connected. Therefore, $deg(v) \geq 3$.
+	
+		Using Lemma 2.1, $\sum_{v \in V} deg(v) \geq 3 \cdot |V|$. Further, using handshake lemma, $\sum_{v \in V} deg(v) = 2 \cdot |E| \geq 3 \cdot |V|$. Rearranging, $|E| \geq \frac{3 \cdot |V|}{2}$.
+
+		\item
+			$V = \{1, 2, 3, 4, 5, 6, 7, 8\}$ and $E = \{(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,8),(8,1),(1,5),(2,6),(3,7),(4,8)\}$
+			
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\linewidth]{graphHW1.png}
+			\caption{Rough sketch}
+		\end{figure}
+	\end{enumerate}
+
+\section*{Question 3}
+	\begin{enumerate}[(a)]
+		\item
+		
+		WLOG, let $d(u, v) \leq d(u, w)$. Then, consider the shortest walk corresponding to $d(u, v)$. Let this walk be denoted by the sequence of vertices $A_0 = u, A_1, \cdots , A_{d(u, v)} = v$. Then, since $v$ and $w$ are adjacent, $A_0 = u, A_1, \cdots , A_{d(u, v)} = v, A_{d(u, v)+1} = w$ is a walk of length $d(u,v)+1$ between $u$ and $w$. Therefore, it must be that the length of shortest walk $d(u, w) \leq d(u, v)+1 \implies d(u, v) \leq d(u, w) \leq d(u, v)+1$.
+
+		\item
+		
+		WLOG, let us fix $u \in V$. Further, overloading notation, let $d(v) = d(u, v) \quad \forall v \in V$. Let the maximum distance $d(v) = k$ and let $A_1, A_2, \cdots, A_k$ be the sets of nodes $A_i = \{v \in V: d(v) = i\} \quad \forall i$. Further, let's define $B_1, B_2, \cdots , B_k$ s.t. $B_i = |A_{i-1}| + |A_i| + |A_{i+1}| \quad \forall i$.
+		
+		\subsection*{Lemma 3.1 $|A_i| \geq 1 \quad \forall i \leq k$}
+		Consider the shortest path to the farthest node from $u$, $x \in V$. Since $d(x) = k$, let the shortest path vertices be $C_0 = u, C_1, \cdots , C_k = x$. We will show that $d(C_i) = i$.
+		
+		First, notice that $C_0 = u, C_1, \cdots , C_i$ denotes a valid path from $u$ to $C_i$. So, $d(C_i) \leq i$.
+		
+		Now, assume, for the sake of contradiction that $d(C_i) < i$. Then, consider the shortest path $D_0 = u, D_1, \cdots, D_{d(C_i)} = C_i$ corresponding to $d(C_i)$. Then, $D_0 = u, D_1, \cdots, D_{d(C_i)}, C_{i+1}, C_{i+2}, \cdots , C_k$ is also a valid path to node $x$, and since we assumed $d(C_i) < i$, $d(x) \leq d(C_i) + k - i < k$, which contradicts the fact that $d(x) = k$. Therefore, it must be $d(C_i) \geq i$.
+		
+		Therefore, $d(C_i) = i \implies C_i \in A_i \implies |A_i|\geq 1 \quad \forall i \leq k$. \\
+		
+		
+		Since $\forall i \quad A_i \neq \phi$ (using lemma 3.1), let there exist some vertex $v \in A_i$. Then, using the result from Question 3(a), since the distance of all vertices in $neighbourhood(v)$ differs by at most 1, $B_i \geq deg(v) + 1 \geq \delta(G) + 1$. Further, $\sum_{i \leq k} B_i \geq k \cdot (\delta(G)+1)$.
+		
+		Now, using a different way to count $\sum_{i \leq k} B_i$, notice that for every vertex $v \in V$, it is counted at most thrice, in $B_{d(v)-1}, B_{d(v)}$ and $B_{d(v)+1}$. Therefore, $\sum_{i \leq k} B_i \leq 3 \cdot |V|$.
+		
+		Combining these results, $k \cdot (\delta(G)+1) \leq 3 \cdot |V| \implies k \leq \frac{3 \cdot |V|}{\delta(G)+1} \implies d(u, w) \leq 3 \cdot \left\lceil \frac{|V|}{\delta(G)+1} \right\rceil \forall w \in V$.
+	\end{enumerate}
+
+\section*{Question 4}
+	$\sim 5$ hours.
+\end{document}
