@@ -137,7 +137,7 @@
 				a \equiv 0 \mod 4 \implies a^2 \equiv 0 \mod 4 \implies a^2+1 \equiv 1 \mod 4\\
 				a \equiv 1 \mod 4 \implies a^2 \equiv 1 \mod 4 \implies a^2+1 \equiv 2 \mod 4\\
 				a \equiv 2 \mod 4 \implies a^2 \equiv 0 \mod 4 \implies a^2+1 \equiv 1 \mod 4\\
-				a \equiv 3 \mod 4 \implies a^2 \equiv 1 \mod 4 \implies a^2+1 \equiv 2 \mod 4\\
+				a \equiv 3 \mod 4 \implies a^2 \equiv 1 \mod 4 \implies a^2+1 \equiv 2 \mod 4
 			\end{eqnarray}
 			
 			In all cases, either $a^2+1 \equiv 1 \mod 4$ or $a^2+1 \equiv 2 \mod 4$.
@@ -149,7 +149,7 @@
 	
 \section{Problem 5.65}
 	
-	When suitor 1 says that they do not know, it must imply that at least one of Suitor 2 and Suitor 3 is wearing a gold crown (since if they were both silver crown wearers, suitor 1 must be wearing gold). Therefore, one of suitor 2 and suitor 3 is wearing gold and the other silver. When suitor 2 says that they don't know either, it must mean that suitor 1 and suitor 3 are both wearing gold crowns. Clearly, not both of them are wearing silver crowns (same reasoning as suitor 1). If exactly one of them is wearing a silver crown, then suitor 2 must themselves be wearing gold, which he did not assert. Therefore, it must be that all three are wearing gold crowns. And the third suitor does not require any extra information to deduce this.
+	When suitor 1 says that they do not know, it must imply that at least one of Suitor 2 and Suitor 3 is wearing a gold crown (since if they were both silver crown wearers, suitor 1 must be wearing gold). Therefore, one of suitor 2 and suitor 3 is wearing gold and the other is possibly wearing silver. When suitor 2 says that they don't know either, it must mean that suitor 1 and suitor 3 are both wearing gold crowns. Clearly, not both of them are wearing silver crowns (same reasoning as suitor 1). If exactly one of them is wearing a silver crown, then suitor 2 must themselves be wearing gold, which he did not assert. Therefore, it must be that all three are wearing gold crowns. And the third suitor does not require any extra information to deduce this.
 
 \section{Problem 6.6}
 
@@ -159,10 +159,10 @@
 		
 			Assume that for some $k \in \mathbb{Z^+}$, $1^3+2^3 + \cdots + k^3 = \frac{k^2(k+1)^2}{4}$.
 			\begin{eqnarray*}
-				1^3+2^3 +\cdots+ k^3 + (k+1)^3 = \frac{k^2(k+1)^2}{4} + (k+1)^3 \\
-				1^3+2^3 +\cdots+ k^3 + (k+1)^3 = \frac{k^2(k+1)^2 + 4(k+1)^3}{4} \\
-				1^3+2^3 +\cdots+ k^3 + (k+1)^3 = \frac{(k+1)^2(k^2+4k+4)}{4} \\
-				1^3+2^3 +\cdots+ k^3 + (k+1)^3 = \frac{(k+1)^2(k+2)^2}{4}
+				1^3+2^3 +\cdots+ k^3 + (k+1)^3 & = \frac{k^2(k+1)^2}{4} + (k+1)^3 \\
+				& = \frac{k^2(k+1)^2 + 4(k+1)^3}{4} \\
+				& = \frac{(k+1)^2(k^2+4k+4)}{4} \\
+				& = \frac{(k+1)^2(k+2)^2}{4}
 			\end{eqnarray*}
 			
 		Hence, by the principle of mathematical induction, $1^3+2^3 + \cdots + n^3 = \frac{n^2(n+1)^2}{4}$ for all $n \in \mathbb{Z^+}$.
@@ -170,7 +170,7 @@
 
 \section{Problem 6.10}
 
-	Since $a = \frac{a(1-r)}{1-r}$, the formula holds true for $n = 1$.
+	Since $a = \frac{a(1-r)}{1-r}$, as $r \neq 1$, the formula holds true for $n = 1$.
 
 	Assume that for some $k \in \mathbb{Z^+}$, $a+ar+\cdots+ar^{k-1} = \frac{a(1-r^k)}{1-r}$. Then,
 
@@ -192,9 +192,9 @@
 			9+13+\cdots+(4k+5)+(4(k+1)+5) = \frac{4(k+1)^2+14(k+1)+1}{2} \\
 		\end{eqnarray*}
 	
-		Therefore, $P(k+1)$ is true. $P(k) \implies P(k+1)$.
+		Therefore, $P(k+1)$ is true. $P(k) \implies P(k+1)$ is true.
 		
-		\item $P(1): 9 = \frac{19}{2}$ is false. Therefore, $\forall n \in \mathbb{N}, P(n)$ is false.
+		\item $P(1): 9 = \frac{19}{2}$ is false. Therefore, $\exists n \in \mathbb{N}, P(n)$ is false.
 	\end{enumerate}
 
 \section{Problem 6.18}
@@ -249,15 +249,19 @@
 	
 	Assume that the formula is true for $a_i \forall i \leq k$. Then $a_{k+1} = a_k + 2a_{k-1} = 2^{k-1} + 2\cdot2^{k-2} \implies a_{k+1} = 2\cdot2^{k-1} \implies a_{k+1} = 2^k$.
 	
-	Hence, by the strong principle of mathematical induction, $a_n = 2^n$ for all $n \in \mathbb{N}$.
+	Hence, by the strong principle of mathematical induction, $a_n = 2^{n-1}$ for all $n \in \mathbb{N}$.
 
 \section{Problem 6.37}
 	Since $12 = 3\cdot4+7\cdot0$, $13 = 3\cdot2+7\cdot1$, $14 = 3\cdot0 + 7\cdot2$.
 	
 	Assume that $i = 7x_i+3y_i$ for some $x_i, y_i \in \mathbb{Z^+}+\{0\}$ for all $12 \leq i \leq k$ for some $k \geq 14$.
 	
-	Then $k+1 = (k-2) + 3$. Let $k-2 = 3x_{k-2}+7y_{k-2}$ for some $x_{k-2}, y_{k-2} \in \mathbb{Z^+}+\{0\}$. Therefore, $k+1 = 3(x_{k-2}+1)+7y_{k-2}$. Since $x_{k-2}+1 and y_{k-2} \in \mathbb{Z^+}+\{0\}$, by the strong principle of mathematical induction, all $n \geq 12$ can be represented as $n = 3a+7b$ for some $a, b \in \mathbb{Z^+}+\{0\}$.
+	Let $k-2 = 3x_{k-2}+7y_{k-2}$ for some $x_{k-2}, y_{k-2} \in \mathbb{Z^+}+\{0\}$. Then $k+1 = (k-2) + 3$. Therefore, $k+1 = 3(x_{k-2}+1)+7y_{k-2}$. Since $x_{k-2}+1$ and $y_{k-2} \in \mathbb{Z^+}+\{0\}$, by the strong principle of mathematical induction, all $n \geq 12$ can be represented as $n = 3a+7b$ for some $a, b \in \mathbb{Z^+}+\{0\}$.
 	
-	
+\section{Beer?}
+	\begin{enumerate}[(a)]
+		\item If any of the first two mathematicians did not want to drink beer, they would have answered no. However, they did want to drink beer, but they did not know if the other people following them did. Since the third mathematician knew the other two did want to drink beer since they did not answer no, she says "Yes".
+		\item No. This is because the probability of this event happening (all 3 mathematicians drinking beer) is $\frac{1}{2^3} = \frac{1}{8}$(each mathematician either drinks beer, or does not), diminishing the funniness of the joke by a factor of 8.
+	\end{enumerate}
 
 \end{document}
