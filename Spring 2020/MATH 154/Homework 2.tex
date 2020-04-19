@@ -1,0 +1,190 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 2}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+	
+	Let the graph be $G = (V, E)$. \\
+
+	First, let us generate a partitioning into two sets from a spanning tree $T$. Let us root the tree arbitrarily at any node $root$, then assign $height(u) = $ length of path from $root$ to $u$ using only tree edges. Then, consider sets $A = \{ u \in V : height(u) \equiv 0 \pmod 2 \} $ and $B = \{ u \in V : height(u) \equiv 1 \pmod 2 \} $. Firstly, since $G$ is connected, $T$ must also be connected. Therefore, $A \cup B = V$. Secondly, since there is exactly one path between any pair of vertices in a tree, either $height(u) \equiv 0 \pmod 2$ or $height(u) \equiv 1 \pmod 2$. Therefore, $A \cap B = \phi$. Therefore, $\{A, B\}$ is a valid partition of $V$. \\
+	
+	Next, let us show that WLOG, there are no edge $(u, v)$ s.t. $u \in A$ and $v \in A$. Let $d(u, v)$ = length of path between $u$ and $v$ in $T$.
+	
+	\subsection*{Lemma 1.1: For all $u, v \in A$, $d(u, v) \equiv 0 \pmod 2$}
+		Consider the path corresponding to $d(u, v)$ can be broken up as path from $u$ to $l$ followed by the path from $l$ to $v$, where $l$ is the lowest common ancestor of $u$ and $v$, i.e. $l = \argmax height(w) \forall w \in$ the path from $root$ to $u$ and the path from $root$ to $v$. Using this $l$, $d(u, v) = height(u) + height(v) - 2 \cdot height(l) \implies d(u, v) \equiv height(u) + height(v) - 2 \cdot height(l) \pmod 2 \implies d(u, v) \equiv height(u) + height(v) \pmod 2$. Since $height(u) \equiv height(v) \pmod 2$, $d(u, v) \equiv 0 \pmod 2$. \\
+
+	Assume, for the sake of contradiction, that there exists an edge $(u, v)$ s.t. $u \in A$ and $v \in A$. If $(u, v) \in T$, $d(u, v) = 1$ which contradicts Lemma 1.1. Alternately, if $(u, v) \notin T$, consider the cycle formed by the path in $T$ corresponding to $d(u, v)$ and the edge $(u, v) \notin T$. Since $d(u, v) \equiv 0 \pmod 2$, this cycle has odd length, which contradicts the fact that $G$ was a bipartite graph.
+
+\section*{Question 2}
+	Let us arbitrarily label the nodes $1,2,3,4,5,6$. Let $deg(u)$ = degree of node $u$. For construction, let's fix the labels WLOG such that in the degree sequence, $\forall i,j$ s.t. $i < j$, $deg(i) \geq deg(j)$ in the isomorphic equivalent of the labelled tree we pick. Since we are generating a connected tree, number of edges = $5$ and we also know $1 \leq deg(v) \leq 5 \quad \forall v$. Now, let us use case bashing. $5$ possibilities arise for node $1$:
+	
+	\subsection*{$deg(1) = 5$}
+		Then, since total number of edges = 5, all of which have node 1 as an endpoint, only one possibility arises:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\linewidth]{graphHW2-0.png}
+		\end{figure}
+
+	\subsection*{$deg(1) = 4$}
+		Since 4 of the 5 edges have node 1 as an endpoint, the final edge must be connected to node 2 (since $deg(2) \geq deg(k) \quad \forall k > 2$
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\linewidth]{graphHW2-1.png}
+		\end{figure}
+	\subsection*{$deg(1) = 3$}
+		Then, consider $deg(2)$. If $deg(2) = 1$, $deg(k) = 1 \quad \forall k \geq 2 \implies \sum_{v} deg(v) = 3 + 5\cdot1 = 8 \neq 10 = 2\cdot|E|$, which violates handshake lemma. Therefore, $2 \leq deg(2) \leq 3$, i.e. 2 subcases arise for node 2:
+
+			\subsubsection*{$deg(2) = 3$}
+				In this case, $\sum_{k \geq 3} deg(k) = 10 - (deg(1) + deg(2)) = 10 - 6 = 4 \implies deg(k) = 1 \quad \forall k \geq 3$.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.3\linewidth]{graphHW2-2.png}
+				\end{figure}
+
+			\subsubsection*{$deg(2) = 2$}
+				In this case, $\sum_{k \geq 3} deg(k) = 10 - (deg(1) + deg(2)) = 10 - 5 = 5 \implies deg(3) > 1$ (otherwise, $\sum_{k \geq 3} deg(k) = 4$). Therefore, $deg(3) = 2$. Since $deg(2) = deg(3)$, labels 2 and 3 are interchangeable. Note that either node 2 or node 3 must be connected to node 1 (Otherwise, since at least 3 nodes are connected to node 2 and 3, $deg(1) \neq 3$.) WLOG, let node 2 be the node connected to node 1.
+				
+				2 distinct cases arise based on location of node 3:
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.3\linewidth]{graphHW2-3.png}
+					\caption{Node 3 is connected to node 2}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.3\linewidth]{graphHW2-4.png}
+					\caption{Node 3 is not connected to node 2}
+				\end{figure}
+
+	\subsection*{$deg(1) = 2$}
+		In this case, since $deg(k) \leq 2 \quad \forall k$, the graph must be a chain.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\linewidth]{graphHW2-5.png}
+		\end{figure}
+
+	\subsection*{$deg(1) = 1$}
+		This case is not possible, because if $deg(k) = 1 \quad \forall k$, $\sum_{k} deg(k) = 6 \neq 10 = 2\cdot|E|$, which contradicts the handshake lemma. \\
+		
+	Therefore, there exist 6 different non-isomorphic trees of 6 nodes, as drawn above.
+	
+\section*{Question 3}
+	Let the graph $G = (V, E)$. Let the weight of an edge $e$ be denoted by $w_e$. WLOG, consider two vertices $u$ and $v$. Let the minimum weight edge between $u$ and $v$ in $T$ have weight $\alpha$ and connect $(x, y)$. Let the largest truck weight that can pass between two vertices $u$ and $v$ be $\beta$.
+	
+	Firstly, consider the path denoted by nodes $a_1, a_2, \cdots , a_k \in T$. Then, since, $w_{(a_i, a_{i+1})} \geq \alpha \quad \forall i < k$, using this path, a truck of weight at least $\alpha$ may pass between $u$ and $v$, i.e. $\beta \geq \alpha$.
+	
+	Next, assume, for the sake of contradiction, that $\beta > \alpha$, and the path a truck of weight $\beta$ can take be $b_1, b_2, \cdots, b_l$. Compare this path with the path $a_1, a_2, \cdots , a_k \in T$. For the minimum weight edge $(x, y)$ (having weight $\alpha$), there must be some $i < k$ for which $a_i = x$ and $a_{i+1} = y$. Corresponding to this, the path $b$ must \textbf{skip} this edge, and there must be some $p, q$ such that $b_p = a_r$ and $b_q = a_s$ but $b_{p+1} \neq a_{r+1}$ and $b_{q-1} \neq a_{s-1}$ for the largest $r \leq i$, and the smallest $s \geq i+1$. Informally, we pick the part of the path $b_p, \cdots, b_q$ that is used by trucks to skip over the minimum weight edge, using edges not in $T$. Now, Note that there are two paths between $a_r$ and $a_s$, $a_r, a_{r+1}, \cdots, a_s \in T$ and $b_p = a_r, b_{p+1}, \cdots, b_q = a_s \notin T$, i.e., the edge $(x, y)$ (with weight $\alpha$) is in a cycle. Further, all edges on $b$ have weight $\geq \beta$. Therefore, we can delete edge $(x, y)$ (with weight $\alpha$) and replace it with a new edge not in $T$ from the cycle(i.e., from the path $b$) to obtain a new spanning tree $T'$. Now, total weight of $T' \geq$ total weight of $T + \beta - \alpha \implies $ total weight of $T' >$ total weight of $T$. which contradicts our assumption that $T$ was the maximum spanning tree of $G$, and therefore, $\beta \leq \alpha$.
+	
+	Combining these results, $\beta = \alpha$, that is, the largest truck that can make it from $v$ to $u$ is always the same as the minimum edge weight on the unique path from $v$ to $u$ in $T$.
+	
+	
+\section*{Question 4}
+	$\sim 5$ hours.
+\end{document}

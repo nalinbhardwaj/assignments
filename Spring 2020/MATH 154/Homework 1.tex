@@ -140,6 +140,9 @@
 			\includegraphics[width=0.3\linewidth]{graphHW1.png}
 			\caption{Rough sketch}
 		\end{figure}
+		
+		Proof: We show that deleting any 2 edges from the graph yields a connected graph. Since the graph is symmetric across all "outer ring" edges (i.e. labels of the nodes can be swapped to obtain an isomorphic graph), consider WLOG edge $(1, 2)$ as one of the edges being deleted. On deleting this, in the new subgraph $E-\{(1, 2)\}$, we have a cycle $1, 8, 7, 6, 5, 1$ and another cycle $2, 3, 4, 5, 6, 2$. Deleting an edge, therefore, cannot disconnect these two sets within themselves. Further, since there are multiple connections between these two cycles (edges $(5, 6)$, $(1, 5)$ and $(2, 6)$), deleting any one of these edges cannot disconnect the two cycles. Alternately, if no edges on the "outer ring" are deleted, since the outer ring is a cycle connecting all nodes, the graph is also connected. Therefore, no 2 edges can be deleted to obtain a disconnected graph, i.e. the graph is 3-connected.
+		
 	\end{enumerate}
 
 \section*{Question 3}
