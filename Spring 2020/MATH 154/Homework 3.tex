@@ -1,0 +1,177 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{seqsplit}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 3}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+	Let the tree be $T = (V, E)$. Let the nodes be labelled $1, 2, \cdots, |V|$. Let the degree of a node $u$ in tree $T$ be $deg(u, T)$ and the number of occurrences of node $v \in V$ in the Cayley sequence $L$ be $occ(v, L)$. Consider the algorithm for converting a tree into a Cayley sequence (from the lecture slides):
+	\begin{enumerate}
+		\item Take the lowest labeled leaf, $v \in V$
+		\item Record label of $v$'s neighbor
+		\item Remove $v$ from $T$
+		\item Repeat until $T$ has only 2 vertices
+	\end{enumerate}
+	
+	Let us proceed to prove using the principle of mathematical induction. We have to prove that $\forall v \in V occ(v, L) = deg(v, T) + 1$.
+	
+	\subsection*{Base case: $|V| = 2$}
+		In this case, there are only 2 vertices in the tree $T$, and based on step 4, we obtain an empty Cayley sequence $\phi$. Since $deg(1, T) = 1 = occ(1, \phi) + 1$ and $deg(2, T) = 1 = occ(2, \phi) + 1$. Therefore, $\forall v \in V occ(v, L) = deg(v, T) + 1$.
+	
+	\subsection*{Inductive step}
+		Assume that the statement is true for a tree $T = (V, E)$ and it's corresponding Cayley sequence $L$. Add a node $u$ to this tree $T$ to obtain $T' = (V', E')$ and Cayley sequence $L'$. WLOG, let us relabel all existing nodes of $T$ such that newly added node $u$ is the lowest labeled leaf. (Note that this can be done WLOG because otherwise, there must exist a sequence of node insertions into the tree such that node $u$ was the lowest labelled leaf when inserted. This follows from the Cayley's sequence generation algorithm itself.) Further, let $v \in V$ be the neighbour of $u$ in $T'$.
+		
+		First, note that for all nodes $k \notin \{u, v\}$, the degree of the node is unchanged. Since only node $v$ has a new neighbour, $deg(k, T') = deg(k, T)$. By the inductive hypothesis, $deg(k, T) = occ(k, L)$. Further,  $occ(k, L') = occ(k, L)$. Combining results, $deg(k, T') = occ(k, L') + 1 \quad \forall k \notin \{u, v\}$.
+		
+		Secondly, for node $u$, since it is the lowest labelled leaf, $deg(u, T') = 1$ and the first step of our algorithm removes it from $T'$ to obtain $T$ (and we know $occ(u, L) = 0$). Therefore, $deg(u, T') = 1 = occ(u, L') + 1$.
+		
+		Finally, since $u$ is lowest labelled leaf of $T'$, the first step of the algorithm will record the label of it's neighbour ($v$) and remove it from $T'$ to obtain $T$. Therefore, $occ(v, L') = 1 + occ(v, L)$. We also know that $deg(v, T') = deg(v, T)$ (since only $u$ is added as a neighbour). By the inductive hypothesis, $deg(v, T) = occ(v, L) + 1 \implies deg(v, T') = deg(v, T) + 1 = occ(v, L') + 1$.
+		
+		Therefore, $\forall v \in V occ(v, L') = deg(v, T') + 1$.
+		
+\section*{Question 2}
+
+	Let the connected, directed graph be $G' = (V', E')$. Let the set of nodes $u$ s.t. $d_{in}(u) = d_{out}(u) = 0$ be $S$. Construct the graph $G = G' \setminus S$. Any eulerian circuit in $G$ is also an eulerian circuit in $G'$ (by definition, it covers all edges of $G'$, since no edges are connected to $S$). Therefore, let us prove that for connected, directed graphs $G = (V, E)$ such that $\forall v \in V d_{in}(v) = d_{out}(v) > 0$, $G$ has an Eulerian circuit if and only if for every vertex $v$ of $G$, $d_{in}(v) = d_{out}(v)$, and our results follow for all graphs of the form $G'$.
+
+	\subsection*{Part 1: If $G$ has an Eulerian circuit, then $d_{in}(v) = d_{out}(v) \quad \forall v \in V$. }
+
+		Let the Eulerian circuit of $G$ be denoted as the sequence of edges $A_1, A_2, \cdots, A_{|E|}$. Further, let $\forall e \in E, next(e) = $ the edge following $e$ in $A$ (i.e., $next(A_i) = A_{i+1} \quad \forall i < |E|$ and $next(A_{|E|}) = A_1$). Similarly, define the inverse function of $next$, $prev$.
+		
+		For any vertex $v \in V$, let $E_{in}(v)$ denote the set of incoming edges into $v$ and $E_{out}(v)$ denote the set of outgoing edges from $v$. Then, since every edge $e \in E_{in}(v)$ it part of the eulerian circuit of $G$, it must have a $next(e) \in E_{out}(v)$. Therefore, $next: E_{in}(v) \mapsto E_{out}(v)$ is one-to-one. Similarly, every edge $e \in E_{out}(v)$ must have $prev(e) = next^{-1}(e) \in E_{in}(v)$. Therefore, $next: E_{in}(v) \mapsto E_{out}(v)$ is onto. Therefore, $next$ is a bijection between $E_{in}(v)$ and $E_{out}(v)$, and $|E_{in}(v)| = d_{in}(v) = d_{out}(v) = |E_{out}(v)|$.
+		
+	\subsection*{Part 2: If $d_{in}(v) = d_{out}(v) \quad \forall v \in V$, then $G$ has an Eulerian circuit}
+
+	\subsubsection*{Lemma 1: If $\forall v \in V d_{in}(v) = d_{out}(v) > 0$, then there must be a cycle in the graph.}
+			
+			Let us assume, for the sake of contradiction, that there are no cycles in $G$. Then consider the longest path starting at an arbitrary vertex $v \in V$. Let this path be denoted by the sequence of vertices $A_1 = v, A_2, \cdots A_k$. Note that $k > 1$ since $d_{out}(A_1) > 0$. Since $d_{out}(A_k) > 0$, there must be some node $x$ such that there is an edge $(A_k, x)$. Then, two cases arise: Either $x \notin A$, in which case $A + \{x\}$ is a longer path than $A$, and $A$ was not the longest path starting at $v$, which is a contradiction. Or $x \in A$, in which case there is a cycle in $G$. Therefore, if $\forall v \in V d_{in}(v) = d_{out}(v) > 1$, there must be a cycle in $G$. \\
+	
+	Now, let us proceed by the principle of strong induction on $|E|$.
+	
+	\subsubsection*{Base case: $\forall v \in V d_{in}(v) = d_{out}(v) = 1$ and $|E| = |V|$.}
+		
+		In this case, the only connected, directed graph that can be constructed is a cycle. This is because each node has exactly one incoming edge and one outgoing edge, and this is only possible if the graph is a cycle containing all nodes $\in V$.
+		
+		By construction, this cycle contains all the edges in the graph, and therefore, it is an Eulerian circuit.
+		
+	
+	\subsubsection*{Inductive step: For any graph $G$ with $d_{in}(v) = d_{out}(v) > 0 \quad \forall v \in V$ and $|E| > |V|$, $G$ contains an Eulerian cycle.}
+			
+		By Lemma 1, we know that there must be a cycle in the graph. Let the smallest cycle in $G$ be denoted by the sequence of edges $A_1, A_2, \cdots, A_k$. Consider the graph $G'' = (V'', E'')$ where $V'' = V$ and $E'' = E \setminus A$. Since $|A| > 0, |E''| < |E|$. By the inductive hypothesis, graph $G''$ has an Eulerian cycle. Let this cycle be $B_1, B_2, \cdots, B_{|E''|}$. Note that $G$ must contain a node $v$ such that $d_{in}(v) = d_{out}(v) > 1$ (otherwise, $|E| = |V|$, which is the base case). This implies that $B$ must contain some $i$ such that $B_i = (x, v)$ and $B_{i+1} = (v, y)$ for some $x, y \in V$. Let's also relabel the cycle $A$ to start at $v$. Now, consider the eulerian circuit $B_1, B_2, \cdots B_i, A_1, A_2, \cdots A_k, B_{i+1}, \cdots B_k$. This covers are edges $\in E''$ and it covers all edges $\in A$ and therefore, it covers all edges in $E$. Therefore, we have found an eulerian cycle in graph $G$.
+		
+\section*{Question 3}
+	Let $G = (V, E)$, $V = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\}$ and $E = \{(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), \newline (3, 5), (4, 5), (5, 6), (3, 6), (7, 8), (7, 9), (7, 10), (7, 11), (8, 9), (8, 10), (8, 11), (9, 10), (9, 11), (10, 11), (6, 8), (6, 10)\}$.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\linewidth]{graphHW3.png}
+		\end{figure}
+
+	Proof: In this graph, note that node 6 is an articulation point (i.e. deleting node 6 disconnects the graph). Let us assume, for the sake of contradiction, that there exists a hamiltonian cycle in this graph. WLOG, let that cycle that starts at a node labelled $k$ where $k \leq 6$ (since the graph is isomorphic in the other case). The cycle must cross over to nodes with label $l > 6$, and return back. However, if the path crosses node label $6$ once, finding a hamiltonian cycle is equivalent to finding a path with node $6$ deleted from the graph. However, we know that deleting an articulation point from the graph disconnects the graph. Therefore, there exist no hamiltonian cycle in this graph.
+	
+\section*{Question 4}
+	$\sim 6$ hours.
+\end{document}
