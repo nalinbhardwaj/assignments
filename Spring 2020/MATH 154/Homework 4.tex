@@ -1,0 +1,193 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{seqsplit}
+\usepackage{hyperref}
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 4}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+\label{sec:Question1}
+	\subsection*{Part 1: If $G$ is planar, every block of $G$ is planar}
+		Consider a graph $G' = $ subgraph of $G$. Since there is a planar representation of $G$, we can draw $G$ in a planar way, and there must be a planar representation of $G'$, as removing edges/nodes does not affect planarity in the drawing of $G$.
+	
+	\subsection*{Part 2: If every block of $G$ is planar, $G$ is planar}
+		We proceed with using the principle of mathematical induction on the number of blocks in $G$.
+		
+		\subsubsection*{Base case: $G$ is a block}
+			Since the block has a planar representation, the planar representation of $G$ is the same as the planar representation of the block, i.e. $G$ is planar.
+			
+		\subsubsection*{Inductive step: $G$ has multiple blocks}
+			In this case, we know that a block graph is a tree (Theorem 4.1.1), consider a leaf vertex of the block graph. Let this leaf be $B$. Let the only neighbour of $B$ in the block graph be $A$. Since $B$ is a leaf, let $v$ be the only (cut) vertex shared by $B$ with $A$ (and with $G'$, by extension). Consider the graph $G' = G \setminus B$ with one fewer block. By the inductive hypothesis, $G'$ is planar. Consider the planar drawing of $G'$. By ear decomposition theorem, there must be a way to draw $A$ (and $G'$) such that $v \in$ an ear. Then, there must be a way to draw $A$ such that $v$ lies on the outer most face of the drawing (since if we draw the rest of the nodes/edges in a planar embedding in 2D, we can draw the ear $v$ is part of in a completely different dimension). Therefore, $A$ has a planar drawing such that the shared vertex $v$ is on the outer most (infinite) face. Then, since $B$ is also planar, $B$ can be drawn on this infinite face connected to $v$, to obtain a planar drawing of $G$.
+
+\section*{Question 2}
+	Let $G(n)$ be the hypergraph corresponding to vertices $V = \{0, 1\}^n$. Let $adj(a) = $ the set of neighbours of $a \forall a \in V$. Let node $(0,0,\ldots,0) = u$ and $(1,1,\ldots,1) = v$. Further, let $\kappa(u, v) = $ the minimum number of vertices that one needs to remove from $G(n)$ to disconnect $u$ and $v  = \alpha$.
+	
+	\subsection*{Part 1: $\alpha \leq n$}
+		Note that the vertex $v$ has $n$ bits. Since it is connected to vertices differing in exactly one bit, it has $|adj(v)| = n$(since each bit flip yields a distinct neighbour). Removing $adj(v)$ from $G(n)$ disconnects $v$ from the rest of the graph, therefore the \textit{minimum} number of vertices that one needs to remove $\alpha \leq n$.
+	
+	\subsection*{Part 2: $\alpha \geq n$}
+		By Menger's theorem, there exist $\alpha$ vertex-disjoint paths between $u$ and $v$. We will show that there are at least $n$ vertex-disjoint paths between $u$ and $v$ in $G(n)$. We proceed with the principle of mathematical induction on $n$.
+		
+		\subsubsection*{Base case: $n = 1$}
+			The graph consists of two node $(0)$ and $(1)$. There is only one edge, and therefore, only one vertex-disjoint path, i.e. $\alpha = n$.
+			
+		\subsubsection*{Inductive step: $n > 1$}
+			Consider the first bit of the vertices of $G(n)$. Consider the induced subgraph of nodes with first bit $= 0$. There are $2^{n-1}$ nodes with the first bit $0$. Note that this induced subgraph is isomorphic to $G(n-1)$. This is because the vertices/edges in this subgraph are the same as "ignoring" the existence of the first bit (WLOG, this is the same as $G(n-1)$). WLOG, the induced subgraph of nodes with first bit $= 1$ is also isomorphic to $G(n-1)$. Therefore, we have obtained a partition of $G(n)$ into two induced subgraphs such that they are individually isomorphic to $G(n-1)$, and there are $2^{n-1}$ edges between these two induced subgraphs($\forall a$ vertex $a$ is connected to the the vertex with label of $a$ with first bit flipped). Let these two subgraphs be $A$ and $B$ and WLOG, let $u \in A$. \\
+			
+			By the inductive hypothesis, the number of vertex disjoint paths $\kappa((0,0,\ldots,0), (1,1,\ldots,1))$ in $G(n-1) \geq n-1$. Using this, we will list $n$ vertex-disjoint paths in $G(n)$:
+			
+			Path 1: The path $(0, 0, \ldots, 0), (1, 0, \ldots, 0), \ldots, (1, 1, \ldots, 1)$. That is, we take an edge from $u \in A$ to $B$ and take any path in $B$. Let the second last node in this path, which $\in adj((1, 1, \ldots 1))$ be $\gamma = (\gamma_1 = 1, \gamma_2, \gamma_3, \ldots, \gamma_n)$.
+			
+			Now, note that by the inductive hypothesis, there are $n-1$ paths between $(0, 0, \ldots, 0)$ and $(0, 1, \ldots, 1)$. Note that, since $|adj((0, 1, \ldots, 1))| = n-1$ in induced subgraph $A$, each of the path also yields a path between $(0, 0, \ldots, 0)$ and some node $\in adj((0, 1, \ldots, 1))$. This is because the paths are vertex disjoint (and only their endpoints collide).
+			
+			Path 2: The path $(0, 0, \ldots, 0), \ldots, (0, \gamma_2, \gamma_3, \ldots, \gamma_n), (0, 1, 1, \ldots, 1), (1, 1, \ldots, 1)$. That is, we take a path in $A$ between $u$ and the node analogous to $\gamma$ in $A$ (with first bit flipped). Then we go to $(0, 1, 1, \ldots, 1)$ (which is a neighbour) and cross over to our destination $(1, 1, 1, \ldots, 1)$ in $B$.
+			
+			$n-2$ paths: Consider the set $adj((0, 1, \ldots, 1)) \setminus (0, \gamma_2, \gamma_3, \ldots, \gamma_n)$ in $A$. This set contains $n-2$ vertices, each of which have a path from starting point $u$. WLOG, let the endpoint of one of these paths be $\beta = (\beta_1 = 0, \beta_2, \ldots \beta_n)$. Then we take the path $(0, 0, \ldots, 0), \ldots, \beta, (1, \beta_2, \ldots \beta_n), (1, 1, \ldots, 1)$. That is, we take the vertex-disjoint path from $u$ to some node in $adj((0, 1, \ldots, 1)) \in A$, cross over to $B$, and reach our destination $v$. \\
+			
+			Note that, by construction, all these paths are vertex disjoint. Since the $n-2$ paths by themselves are vertex disjoint, it suffices to show that the first 2 paths are also vertex disjoint with this set (and each other). Since path 1 crosses over to $B$ and uses vertices in $B$, it may not collide with any other paths (since none of the other paths visit $\gamma$, and they use vertices of $A$). Similarly, path 2 uses a disjoint path to $(0, \gamma_2, \gamma_3, \ldots, \gamma_n) \rightarrow (0, 1, 1, \ldots, 1)$ and crosses over. None of the other paths visit $(0, \gamma_2, \gamma_3, \ldots, \gamma_n)$ or $(0, 1, 1, \ldots, 1)$, and we know by the inductive hypothesis that there exists a vertex disjoint path to $(0, \gamma_2, \gamma_3, \ldots, \gamma_n)$.
+			
+			Therefore, we have shown $\alpha \geq n$. \\
+			
+			Combining the two results, $\alpha = n$.
+
+\section*{Question 3}
+	\begin{enumerate}[(a)]
+		\item
+			\textbf{Part 1: If each face in a planar embedding of $G$ has an even number of sides, $G$ is bipartite.}
+				
+				Let $length(f) =$ number of sides of a face $f$.
+			
+				Since, in a planar embedding of $G$, every cycle splits space into two parts (inside and outside), each cycle corresponds to a loop in the drawing. Consider the subgraph $G'$ containing a cycle $C$ and all the faces that compose the space inside it. That is, $G'$ is the set of faces the union of which yields the space inside the loop.
+				
+				\subsection*{Lemma 1: Each edge separate two faces in the planar graph $G'$}
+					Since each edge is a part of a cycle, removing an edge deletes the cycle from the graph. Since each cycle separates space into two sides, removing this edge then leads to removal of a face. Therefore, each edge separate two faces in this planar graph $G'$.
+				
+				By construction, the edges of the original cycle $C$ separate the (infinite) face and a face inside $G'$. Further let $s = \sum length(f) \quad \forall $ faces $f$. Further, using lemma 1, we know that each edge seperates two faces in $G'$. Using this, consider the edges that do \textit{not} seperate the infinite face and a face inside. Note that if an edge does not seperate the infinite face and a face inside, it must seperate two faces, both of which are inside. Then, $s$ must double count this edge. That is, this edge must be counted in both the internal faces it seperates in $s$. Further, since $length(f) \forall $ faces $f$ is even, $s$ is even. Notice that we can express $length(C) = s - $ the number of edges that seperate two internal faces. As we have shown, $s$ is even and the number of edges that seperate two internal faces is also even. Therefore, $length(C)$ is even.
+				
+				WLOG, this method works for all cycles. Since all cycles have an even number of edges, the graph has no cycles of odd length, and therefore it is bipartite.
+				
+			\textbf{Part 2: If $G$ is bipartite then each face in a planar embedding of $G$ has an even number of sides.}
+			
+				Consider the contrapositive: If any face in any planar embedding of $G$ has an odd number of sides, $G$ is not bipartite.
+				
+				Since the sides of a face are in a cycle, a face with odd number of sides implies that $G$ has a cycle of odd length. As we have proven before, graphs containing odd length cycles are not bipartite. Hence proved.
+				
+		\item I presume that two circles are considered "adjacent" if they share some boundary circumference (not just a point) (otherwise, there exist simple counterexamples). We proceed using the principle of mathematical induction on the number of circles. Let the number of circles be $n$.
+			
+			\textbf{Base case: $n = 1$} \\
+				In this case, there's only one circle, and we only need 2 colors, one for the inside and one for the outside.
+			
+			\textbf{Inductive step: $n > 1$} \\
+				By the inductive hypothesis, assume that the set of regions created by $n-1$ circles is two colorable. Then, when we add a new circle with the underlying space retaining its colour. Now, all regions of space inside the new circle having some boundary along the circumference of the new circle, are "wrongly" coloured, i.e. the circumference separates two regions with same colors. Since the original regions created by $n-1$ circles were two-colorable, these regions must be the only regions "wrongly" coloured. Flip the colour of all these regions. Since these regions are strictly inside the new circle, they are now correctly coloured with respect to the original circles, and the newly added circle, flipping the colour "fixes" all wrongly coloured regions along the circumference. This fixes the colour of all the circles. Proof: Assume, for the sake of contradiction, that it doesn't. Then, there must be some circumference along which the two sides have the same colour. Since, by definition, we have fixed the colours along the circumference of the newly added circle, this circumference must belong to some previously existing circle. However, that would mean that our original set of circles was coloured incorrectly. This contradicts our inductive hypothesis.
+				
+				Therefore, we have found a two-coloring for this set of circles.
+	\end{enumerate}
+
+\section*{Question 4}
+		$\sim 7$ hours.
+
+\end{document}

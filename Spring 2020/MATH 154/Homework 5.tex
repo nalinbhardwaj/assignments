@@ -1,0 +1,212 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{seqsplit}
+\usepackage{hyperref}
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 5}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+	\begin{enumerate}[(a)]
+		\item Let $v$ be the number of vertices, $e$ be the number of edges and $f$ be the number of faces.
+			
+			Since each vertex is connected to $k$ edges, by the handshake lemma, we know that $k\cdot v = 2\cdot e \implies e = \frac{k \cdot v}{2}$.
+		
+			Let the number of faces with $i$ sides in the solid be $F_i$. Further, let number of occurrences of $i \in n$ be $A_i$. Then, $v \cdot A_i$ is the count of occurrences of faces of $i$ sides in the solid. Then, $i \cdot F_i = v \cdot A_i$, since each face of $i$ sides has $i$ vertices, and is counted $i$ times. Rearranging, $F_i = \frac{v \cdot A_i}{i}$. Note that $f = \sum_{\forall i} F_i = \sum_{\forall i} \frac{v \cdot A_i}{i} = v \cdot (\sum_{\forall i} \frac{A_i}{i}) =  v \cdot (\sum_{\forall i} \frac{1}{i} + \frac{1}{i} \cdots (A_i$ times$) \cdots \frac{1}{i}) = v \cdot (\sum_{i = 1}^{k} \frac{1}{n_i})$. This is because for each $i$, $\frac{1}{n_i}$ shows up exactly once in $(\sum_{\forall j} \frac{A_j}{j})$, when $n_i = j$(since $n_i$ contributes $1$ to $A_j$). Therefore, $f = v \cdot (\sum_{i = 1}^{k} \frac{1}{n_i})$.
+		
+			Using the two results in Euler's formula, $v - e + f = 2 \implies v - \frac{v \cdot k}{2} + v \cdot (\sum_{i = 1}^{k} \frac{1}{n_i}) = 2 \implies v \cdot (1 - \frac{k}{2} + \frac{1}{n_1} + \frac{1}{n_2} + \cdots + \frac{1}{n_k}) = 2$. Hence proved.
+		\item 
+		Let us first bound $k$: If $k < 3$, then we cannot construct a polyhedra with only straight lines (as shown in lecture), therefore, $k \geq 3$. By the result in (a), we have $(1 - \frac{k}{2} + \frac{1}{n_1} + \frac{1}{n_2} + \cdots + \frac{1}{n_k}) = 2 \implies \sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$. As proved in lecture, $n_i \geq 3$. Then, $\sum_{i = 1}^{k} \frac{1}{n_i} \geq \frac{k}{3} \implies \frac{k}{3} > \frac{k}{2} - 1$. Solving for $k$, $k < 6$. Therefore, we have $3 \leq k \leq 5$.
+		
+		Next, let us bound $n_i \quad \forall i$: As shown in lecture there is at least one face with less than 6 sides in a regular polyhedra. Further, as shown independently in lecture, $n_i \geq 3$. Combining, $3 \leq n_i \leq 5$ for at least one $i$.
+		
+		Let us use case bashing. For all cases, WLOG, let $\forall i \leq j \quad n_i \geq n_j$.
+		
+		\subsection*{$k = 3$}
+			Using $3 \leq n_3 \leq 5$, three sub-cases arise:
+			\subsubsection*{$n_3 = 3$}
+				Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, we have $\frac{1}{n_1} + \frac{1}{n_2} > \frac{1}{6}$. Then, each vertex is connected to three edges, two of which are part of the triangle formed by the face corresponding to $n_3$ and the third is part of the face with $n_1$ sides. However, if we consider the connected faces to an adjacent vertex (in the triangle), we see that the third face has $n_2$ sides. Since the faces adjacent to a vertex are symmetric, by definition, $n_1 = n_2 \implies \frac{2}{n_2} > \frac{1}{6}$. Solving for $n_2$, $3 \leq n_2 \leq 11$. If $n_2 \in \{3, 4, 6, 8, 10\}$, $(n_1 = n_2, n_2, 3)$ satisfies the equation from part (a) for $v = \{4, 6, 12, 24, 60\}$ respectively. However, if $n_2 \in \{5, 7, 9, 11\}$, corresponding to $(n_1 = n_2, n_2, 3)$, there exists no integer $v$ for which the equation in part (a) is true.
+				
+				Therefore, in this sub-case, the following sequences are possible: $(3, 3, 3), (4, 4, 3), (6, 6, 3), (8, 8, 3), \newline (10, 10, 3)$.
+			\subsubsection*{$n_3 = 4$}
+				Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, we have $\frac{1}{n_1} + \frac{1}{n_2} < \frac{1}{4} \implies 4(n_1+n_2) < n_1 \cdot n_2$. Since $n_1 \geq n_2 \geq n_3 = 4$, $8 \leq n_1+n_2$. Combining, $(n_1 - 4) \cdot (n_2 - 4) < 16$. Then, $n_2 - 4 < sqrt(16) = 4 \implies 4 = n_3 \leq n_2 < 8$. Trying all combinations of $n_1$ and $n_2$ in the equation, only $n_2 = \{4, 6\}$ are possible $n_2$. Further, for $n_2 = 4$, any $n_1 \geq 4$ satisfies the equation. For $n_2 = 6$, $n_1 \in \{6, 8, 10\}$ satisfy the two equations. 
+				
+				Therefore, we have obtained the following sequences: $(n_1 \geq 4, 4, 4), (6, 6, 4), (8, 6, 4), (10, 6, 4)$.
+			\subsubsection*{$n_3 = 5$}
+				Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, we have $n_2 \geq 5 \implies \frac{1}{n_1} > \frac{1}{10} \implies 5 \leq n_1 \leq 9$. Further, since $\frac{1}{n_1} + \frac{1}{n_2} > \frac{3}{10} \implies (3n_1 - 10) \cdot (3n_2 - 10) < 10^2$. Using this, trying all 16 combinations, we can see that only $n_2 = n_1= 5$ and $n_2 = n_1= 6$ satisfy the equation in part (a) for an integer $v = 20$ and $v = 60$.
+				
+				Therefore, in this sub-case, the following sequences are possible: $(5, 5, 5), (6, 6, 5)$.
+
+		\subsection*{$k = 4$}
+			Using $3 \leq n_4 \leq 5$, two sub-cases arise:
+			\subsubsection*{$n_4 = 3$}
+				Since there is a triangle at each vertex, consider one of these triangles. All vertices that make this triangle contain the same set of side length of connected faces. Since two vertices connected by an edge must share one same face (the one on the other side of the triangle, along the connecting edge), it must be that some $n_i = n_j$ for $i, j \leq 4$. Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, we obtain $\frac{2}{n_i} + \frac{1}{n_l} + \frac{1}{3} > 1 \implies \frac{2}{n_i} + \frac{1}{n_l} > \frac{2}{3}$ where $i$ is an index in $n$ that is repeated multiple times and $l < 4$ is an index that is not repeated. Further, rearranging the equation, we have $(n_i-3)(2n_l-3) > 3^2$. Now, $n_i < 6$. Trying all combinations, we obtain the following valid solutions: $(4, 4, 3, 3), (4, 4, 4, 3), (5, 5, 3, 3), (5, 4, 4, 3), (n_1 \geq 3, 3, 3, 3)$.
+			\subsubsection*{$n_4 > 3$}
+				Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, $\sum_{i = 1}^{k} \frac{1}{n_i} > 1$, however, $\frac{1}{n_i} \leq \frac{1}{4} \implies \sum_{i = 1}^{k} \frac{1}{n_i} \leq 4 \cdot \frac{1}{4} = 1$.
+				
+				Therefore, this case is not possible.
+		\subsection*{$k = 5$}
+			\subsubsection*{$n_5 = 3$}
+				Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, $4 \cdot \frac{1}{3} + \frac{1}{n_1} > \frac{3}{2} \implies \frac{1}{n_1} > \frac{1}{6} \implies 3 \leq n_1 \leq 5$. Trying all combinations, we obtain the following sequences: $(5, 3, 3, 3, 3), (4, 3, 3, 3, 3), (3, 3, 3, 3)$.
+			\subsubsection*{$n_5 > 3$}
+				Plugging into $\sum_{i = 1}^{k} \frac{1}{n_i} > \frac{k}{2} - 1$, $\frac{1}{n_1} > \frac{1}{2} \implies n_1 < 2$. However, as shown in lecture, $n_1 \geq 3$, so this case is not possible. \\ \\
+				
+		We can see we have obtained the entire set of Archimedean solids from Wikipedia, normal regular polyhedrons, and two infinite families, so this list is exhaustive.
+	\end{enumerate}
+
+\section*{Question 2}
+	\begin{enumerate}[(a)]
+		\item Let the graph be $G = (V, E)$.
+		\subsection*{Lemma 1: If $cr(G) > 0$, then there exists an edge $e \in E$ such that $G' = (V, E \setminus e)$ has $cr(G') \leq cr(G)-1$. }
+			Since $cr(G) > 0$, consider any single crossing in the graph $G$. A crossing is defined by the intersection of two edges, say $e_1$ and $e_2$. If we delete the edge $e_1$ (WLOG), we obtain a subgraph $G' = (V, E \setminus e_1)$ with at least one fewer crossing. That is, $cr(G') \leq cr(G)-1$. \\
+
+		Let us consider the minimum number of edges we need to remove from $G$ to obtain a planar subgraph. Let this number be $k$. By Lemma 1, while $cr(G) > 0$, we can always delete one edge such that it reduces at least one crossing, so, we know that $k \leq cr(G)$. Further, our newly obtained subgraph is planar (since we have created a planar embedding with no crossings). By Theorem 1.33, in a planar graph, if $|V| \geq 3$, then $|E| \leq 3|V| - 6$. In our subgraph, $|E| - k \leq 3|V| - 6 \implies |E| - cr(G) \leq |E| - k \leq 3|V| - 6 \implies |E| - 3|V| + 6 \leq cr(G)$. Hence proved.
+		\item Let us proceed by the principle of mathematical induction on the number of components, $m$.
+			\subsection*{Base case: $m = 1$}
+				In this case, by definition of $cr(G)$, any planar embedding of $G_1$ is also a planar embedding of $G$, and $cr(G) = cr(G_1)$.
+			\subsection*{Inductive step: $m > 1$}
+				Consider the subgraph $G' = G \setminus G_m$. By the inductive hypothesis, $cr(G') = \sum_{i=1}^{m-1} cr(G_i)$. Consider the planar embedding of $G_m$ having $cr(G_m)$ crossings. If we place this planar embedding completely inside any face of the planar embedding of $G'$(corresponding to $cr(G')$) we have obtained a planar embedding of $G$. In this planar embedding, since there are no edges between $G_m$ and $G'$, the only crossings are those consisting of both edges within $G_m$ and those consisting of both edges within $G'$. Therefore, we have shown $cr(G) \leq cr(G') + cr(G_m) = \sum_{i=1}^{m} cr(G_i)$.
+				
+				On the other hand, assume, for the sake of contradiction, that $cr(G) < \sum_{i=1}^{m} cr(G_i)$. In the minimal crossing planar embedding, since no crossing is defined by edges from two different connected components, if $cr(G) < \sum_{i=1}^{m} cr(G_i)$, for some $i$, the subgraph corresponding to $G_i$ in this drawing must have fewer crossings that $cr(G_i)$, which is a contradiction (since $cr(G_i)$, by definition, is the minimum crossing in any planar embedding of $G_i$). Therefore, $cr(G) \geq \sum_{i=1}^{m} cr(G_i)$.
+				
+				Therefore, combining the two results, $cr(G) = \sum_{i=1}^{m} cr(G_i)$.
+		\item Let us construct a graph $G$ such that it has $n$ nodes and at least $m$ edges. By Question 2(a) Lemma 1, we know that removing edges from a graph can only reduce $cr(G)$. Therefore, if we can construct such a graph using more than $m$ edges having $cr(G) < m^3/n^2$, a subgraph of this graph with the extra edges removed will also have $cr(G) < m^3/n^2$.
+		
+			To construct the graph, let the graph be divided into connected components of size $k = \lceil \frac{2m}{n} \rceil$. Let the number of connected components be $q = \lfloor \frac{n}{k} \rfloor$. Further, let $r = n - q \cdot k$, i.e., the remainder on division. Also, let $G_1, G_2 \cdots G_q$ denote the connected components of $G$.
+			
+			Since we have $r$ leftover nodes and $r \leq q$, let these nodes be distributed among $r$ of the $q$ components. Then, there are $r$ components with $k+1$ nodes, let these be components $G_1, G_2 \cdots G_r$, and $q-r$ components with $k$ nodes, let these be components $G_{r+1}, G_{r+2}, \cdots, G_q$. Now, for edges, construct each connected component to be a clique. 
+			
+			Now, consider the isomorphism between the components $G_1, G_2 \cdots G_r$. Consider these components in a 3D "torus" like shape in space. For $i < r$, for each node $x \in G_i$, consider the corresponding node in the isomorphic component $G_{i+1}, x'$. Put an edge between between $x$ and $x'$. For $i = r$, put an edge between $x \in G_r$ and the corresponding node in isomorphic component $G_1, x'$. Now, every node in $G_i \forall i \leq r$ are connected to one more edge.
+
+			Now, repeat the process for the components $G_{r+1}, G_{r+2} \cdots G_q$. For $i < r$, Consider these components in a 3D "torus" like shape in space. For $r < i < q$, For each node $x \in G_i$, consider the corresponding node in the isomorphic component $G_{i+1}, x'$ Put an edge between between $x$ and $x'$. For $i = q$, put an edge between $x \in G_q$ and the corresponding node in isomorphic component $G_{r+1}, x'$. Now, every node in $G_i \forall i > r$ are connected to one more edge.
+			
+			Therefore, all nodes in $G$ are now connected to one extra edge. Further, if we ignore the internal edges within each component, we have a polyhedral embedding of the cycles of nodes connected via our extra edges. Therefore, this subgraph is planar and none of these edges cross with each other, and since they are on a different plane in our spatial embedding, they cannot cross with any internal edges. That is, even in our new graph, $cr(G) = \sum_{i=1}^q cr(G_i)$.
+			
+			In this graph, we have $r \cdot {k+1 \choose 2} + (q-r) \cdot {k \choose 2} + n$ edges. Let us show that $r \cdot {k+1 \choose 2} + (q-r) \cdot {k \choose 2} + n\geq m + \frac{n}{2}$.
+			
+			\begin{align*}
+				r \cdot {k+1 \choose 2} + (q-r) \cdot {k \choose 2} + n &= r \cdot {k+1 \choose 2} - r \cdot {k \choose 2} + q \cdot {k \choose 2} + n \\
+					&= r \cdot \frac{k}{2} + q \cdot {k \choose 2} + n \\
+					&= r \cdot \frac{k}{2} + n \cdot \frac{k-1}{2} + n \\
+					&\geq n \cdot \frac{k-1}{2} + n \\
+					&= n \cdot \frac{\lceil \frac{2m}{n} \rceil - 1}{2} + n\\
+					&\geq n \cdot \frac{\frac{2m}{n}}{2} + \frac{n}{2} \\
+					&=m + \frac{n}{2} \\
+			\end{align*}
+
+			Now, let us show that $cr(G) < \frac{m^3}{n^2} + \frac{n}{24}$. Later, we will show that by removing $\frac{n}{24}$ edges, we can obtain a graph with $cr(G) < \frac{m^3}{n^2}$ and $|E| \geq m$, as desired.
+			
+			First, by the result of Problem 2(b), $cr(G) = \sum cr(G_i) \forall i$. In each connected component, since a crossing is an intersection of two edges, and no pair of edges can cross multiple times, a crossing can be defined by 2 edges, and corresponding to them, 4 endpoints. Therefore, in a connected component, $cr(G_i) \leq {|V_i| \choose 4}$ where $V_i$ is the set of vertices in $G_i$.
+			
+			Since $\forall i \quad |V_i| \leq k+1$, and there are $q$ components, $cr(G) \leq q \cdot {k+1 \choose 4} = q \cdot \frac{(k+1) \cdot k \cdot (k-1) \cdot (k-2)}{24}$. Since $q \cdot k \leq n$, $q \cdot \frac{(k+1) \cdot k \cdot (k-1) \cdot (k-2)}{24} \leq n \cdot \frac{(k+1) \cdot (k-1) \cdot (k-2)}{24}$. Further, since $(k+1) \cdot (k-1) = k^2 -1 < k^2$ and $k-2 < k$, $n \cdot \frac{(k+1) \cdot (k-1) \cdot (k-2)}{24} \leq n \cdot \frac{k^3}{24}$. Plugging in $k = \lceil \frac{2m}{n} \rceil$, we have $cr(G) < n \cdot \frac{{\lceil \frac{2m}{n} \rceil}^3}{24} < n \cdot \frac{{(\frac{2m}{n})}^3}{24} + \frac{n}{24} = \frac{m^3}{3n^2} + \frac{n}{24}$.
+			
+			Therefore, we have created a graph with $m+\frac{n}{2}$ edges such that it has $cr(G) < \frac{m^3}{3n^2} + \frac{n}{24}$. However, recall that by Problem 2(a), Lemma 1, while $cr(G) > 0$, there exists an edge such that its removal reduces $cr(G)$ by at least 1. Therefore, if $\frac{n}{24} > 0$, there exist at least $\frac{n}{24}$ such edges such that their removal reduces $cr(G)$ by 1. By removing $\frac{n}{24}$ such edges, we obtain a subgraph with $n$ nodes and $m + \frac{n}{2} - \frac{n}{24}$ edges such that $cr(G) < \frac{m^3}{3n^2}$. This subgraph is our resultant construction. Hence proved.
+		
+	\end{enumerate}
+\section*{Question 3}
+		$\sim 17$ hours.
+
+\end{document}

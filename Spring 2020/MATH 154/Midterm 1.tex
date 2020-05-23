@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{seqsplit}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Midterm\ 1}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+	Partition of $V = \{A, B, C, D, E, F, G, H, I, J, K, L, M, N\}$:
+	
+	\begin{enumerate}
+		\item $A = \{A, D, E, F, G, I, L\}$
+		\item $B = \{B, C, H, J, K, M, N\}$
+	\end{enumerate}
+
+\section*{Question 2}
+	The sequence of vertices in the eulerian trail are $A, B, C, A, D, C, G, B, H, G, D, E, A, F, D, I, E, F, I, H$.
+	
+
+\section*{Question 3}
+	Let the tree be $T = (V, E)$. Also, let the tree have $|V| = n$. Let the number of leaves in the tree be $a$, and the number of vertices with degree at least $3$ be $b$. Then, the number of vertices with degree $2$ is $n - (a + b)$. Then, $\sum_{v \in V} deg(v) \geq a + 3\cdot b + 2 \cdot (n - a - b) = 2 \cdot n + b - a$. We know that $|E| = (n-1)$. By the handshake lemma, $\sum_{v \in V} deg(v) = 2 \cdot |E| = 2 \cdot (n-1)$. Combining, $2 \cdot (n-1) \geq 2 \cdot n + b - a \implies -2 \geq b - a \implies a \geq b + 2$. Hence proved.
+	
+\section*{Question 4}
+	Consider the block graph $B$ of $G = (V, E)$. Since all block graphs are trees, it is sufficient to show that the maximum degree of a block in $B$ is 2. This is because all trees with maximum degree $2$ are paths.
+	
+	\subsection*{Lemma 1: Neighbouring blocks in $B$ can only share a cut vertex or a bridge. }
+		If the blocks share a vertex, and the vertex is not a cut vertex, the blocks, by definition, are not the maximal subgraphs with no cut vertices.
+		If the blocks do not share a vertex, they are connected by an edge. Assume, for the sake of contradiction, that there is no bridge between two neighbouring blocks. Then, the edge connecting the blocks must be part of a cycle. However, by the ear decomposition method (Theorem 4.2.1), we can then include this edge (and the corresponding cycle) in one of the blocks, which means $B$ was not the block graph, contradicting our assumption.
+	
+	\subsection*{Lemma 2: No hamiltonian path can exist that crosses a bridge or a cut vertex}
+		If any hamiltonian path crosses a bridge $e$, consider the graph $G'$ with edges $E - e$. If there exists a hamiltonian path in $G$, the graph $G'$ without edge $e$ must not be disconnected, which is a contradiction.
+		
+		Similarly, if any hamiltonian path crosses a cut vertex $v$, consider the graph $G'$ with vertices $V - v$. If there exists a hamiltonian path in $G$, the graph $G'$ without vertex $v$ must not be disconnected, which is a contradiction. \\
+	
+	\subsection*{Maximum degree of the blocks in the block graph $B$ is $2$}
+	Now, let us assume, for the sake of contradiction, that there exists a component $u \in B$ that has $3$ or more neighbour blocks. Then, let the first vertex in the hamiltonian path of $G$ $\in u$ be $v$. Then, the hamiltonian path must visit at least 2 other neighbouring components after visiting $v$. However, to do that, it must visit one of the components, and return back to some vertex $\in u$. By Lemma 1, however, we know that neighbouring blocks are only connected by cut vertices or bridges. By lemma 2, we know that no hamiltonian path may cross a cut vertex or a bridge. Therefore, we have reached a contradiction. There is no path that does not repeat vertices starting at $v$ that visits both neighbouring components. Hence, maximum degree is $2$, and therefore, the block graph is a path.
+	
+\end{document}
