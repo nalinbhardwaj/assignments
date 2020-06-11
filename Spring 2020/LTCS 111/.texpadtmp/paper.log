@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  9 MAY 2020 00:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  11 JUN 2020 03:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -593,6 +593,12 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 )
 \Gin@req@height=\dimen147
 \Gin@req@width=\dimen148
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/epigraph/epigraph.sty
+Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
+\beforeepigraphskip=\skip88
+\afterepigraphskip=\skip89
+\epigraphwidth=\skip90
+\epigraphrule=\skip91
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2008/02/07
  Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix <2008/02/07> (tvz)
@@ -604,6 +610,10 @@ Package: fancyvrb 2008/02/07
 \FV@OutFile=\write3
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/04/06 v1.3b Input encoding file
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 )
@@ -614,39 +624,39 @@ Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 Writing index file paper.idx
 (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.aux
 
-LaTeX Warning: Label `fig:marginfig' multiply defined.
+LaTeX Warning: Label `fig:fullfig' multiply defined.
 
 )
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 57.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Try loading font information for T1+pplj on input line 52.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Try loading font information for T1+pplj on input line 57.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1pplj.fd
 File: t1pplj.fd 2004/09/06 font definitions for T1/pplj.
 )
 \AtBeginShipoutBox=\box57
-Package hyperref Info: Link coloring ON on input line 52.
+Package hyperref Info: Link coloring ON on input line 57.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -654,15 +664,15 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 52.
-LaTeX Info: Redefining \pageref on input line 52.
-LaTeX Info: Redefining \nameref on input line 52.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
  (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.out) (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.out)
 \@outlinefile=\write5
 \openout5 = `paper.out'.
 
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 52.
+LaTeX Info: Redefining \selectfont on input line 57.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -698,7 +708,7 @@ LaTeX Info: Redefining \selectfont on input line 52.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 52.
+LaTeX Info: Redefining \microtypecontext on input line 57.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -717,12 +727,12 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 \scratchbox=\box58
 \nofMPsegments=\count133
 \nofMParguments=\count134
-\everyMPshowfont=\toks20
+\everyMPshowfont=\toks22
 \MPscratchCnt=\count135
 \MPscratchDim=\dimen150
 \MPnumerator=\count136
 \makeMPintoPDFobject=\count137
-\everyMPtoPDFconversion=\toks21
+\everyMPtoPDFconversion=\toks23
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
  (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -737,36 +747,36 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \big@size=\dimen151
 \langwohyphens=\language84
-LaTeX Font Info:    Try loading font information for T1+phv on input line 58.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 63.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 58.
+(Font)              scaled to size 8.99994pt on input line 63.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 16.19989pt on input line 58.
-LaTeX Font Info:    Calculating math sizes for size <18> on input line 58.
-LaTeX Font Info:    Try loading font information for OT1+pplx on input line 58.
+(Font)              scaled to size 16.19989pt on input line 63.
+LaTeX Font Info:    Calculating math sizes for size <18> on input line 63.
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 63.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 58.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 63.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 58.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 63.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 58.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 63.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 58.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 63.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -775,16 +785,21 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 32.39978pt on input line 58.
-LaTeX Font Info:    Calculating math sizes for size <36> on input line 58.
+(Font)              scaled to size 32.39978pt on input line 63.
+LaTeX Font Info:    Calculating math sizes for size <36> on input line 63.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 12.59991pt on input line 58.
-LaTeX Font Info:    Calculating math sizes for size <14> on input line 58.
+(Font)              scaled to size 12.59991pt on input line 63.
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 63.
  [1
 
 
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.toc)
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.toc
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <10> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 10.
+LaTeX Font Info:    Font shape `T1/pplj/bx/it' in size <12> not available
+(Font)              Font shape `T1/pplj/b/it' tried instead on input line 10.
+)
 \tf@toc=\write6
 \openout6 = `paper.toc'.
 
@@ -792,15 +807,15 @@ LaTeX Font Info:    Calculating math sizes for size <14> on input line 58.
 
 
 ]
-<graphics/cathedral.jpg, id=29, 626.34pt x 950.55125pt>
+<graphics/cathedral.jpg, id=114, 626.34pt x 950.55125pt>
 File: graphics/cathedral.jpg Graphic file (type jpg)
 <use graphics/cathedral.jpg>
-Package pdftex.def Info: graphics/cathedral.jpg  used on input line 74.
+Package pdftex.def Info: graphics/cathedral.jpg  used on input line 80.
 (pdftex.def)             Requested size: 143.99782pt x 218.53516pt.
-<graphics/shadows.jpg, id=30, 463.7325pt x 550.055pt>
+<graphics/shadows.jpg, id=115, 463.7325pt x 550.055pt>
 File: graphics/shadows.jpg Graphic file (type jpg)
 <use graphics/shadows.jpg>
-Package pdftex.def Info: graphics/shadows.jpg  used on input line 80.
+Package pdftex.def Info: graphics/shadows.jpg  used on input line 86.
 (pdftex.def)             Requested size: 144.00323pt x 170.80904pt.
 
 
@@ -809,48 +824,516 @@ LaTeX Warning: Marginpar on page 3 moved.
 [3
 
 
- <./graphics/cathedral.jpg> <./graphics/shadows.jpg>] (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.bbl
-LaTeX Font Info:    Try loading font information for T1+fvm on input line 11.
+ <./graphics/cathedral.jpg> <./graphics/shadows.jpg>]
+<graphics/colorwheel.jpg, id=121, 200.75pt x 200.75pt>
+File: graphics/colorwheel.jpg Graphic file (type jpg)
+<use graphics/colorwheel.jpg>
+Package pdftex.def Info: graphics/colorwheel.jpg  used on input line 104.
+(pdftex.def)             Requested size: 144.00995pt x 144.00995pt.
+
+Overfull \hbox (0.10748pt too wide) in paragraph at lines 109--110
+[]\T1/pplj/m/n/10 (+12) Color, as an ab-stract con-cept, is very hard to de-scribe. How-ever, to 
+ []
+
+
+Overfull \hbox (0.13004pt too wide) in paragraph at lines 109--110
+\T1/pplj/m/n/10 (+20) color. By def-i-ni-tion, hue refers to the color of a point, as found along 
+ []
+
+[4
+
+ <./graphics/colorwheel.jpg>] [5] [6]
+<Akira/temperature-analysis.png, id=138, 1084.05pt x 481.8pt>
+File: Akira/temperature-analysis.png Graphic file (type png)
+<use Akira/temperature-analysis.png>
+Package pdftex.def Info: Akira/temperature-analysis.png  used on input line 121.
+(pdftex.def)             Requested size: 479.99399pt x 213.33064pt.
+LaTeX Font Info:    Try loading font information for T1+fvm on input line 126.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/bera/t1fvm.fd
 File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
 )
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 11.
+(Font)              scaled to size 6.80005pt on input line 126.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `fvm' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 104.
- [4
 
+
+LaTeX Warning: Marginpar on page 7 moved.
+
+[7
+
+ <./Akira/temperature-analysis.png>]
+<Akira/tron-streaks.png, id=151, 1927.2pt x 1035.87pt>
+File: Akira/tron-streaks.png Graphic file (type png)
+<use Akira/tron-streaks.png>
+Package pdftex.def Info: Akira/tron-streaks.png  used on input line 131.
+(pdftex.def)             Requested size: 143.97504pt x 77.38658pt.
+<Akira/chord-diagram.png, id=152, 1084.05pt x 715.67375pt>
+File: Akira/chord-diagram.png Graphic file (type png)
+<use Akira/chord-diagram.png>
+Package pdftex.def Info: Akira/chord-diagram.png  used on input line 145.
+(pdftex.def)             Requested size: 312.00105pt x 205.97847pt.
+
+Overfull \hbox (0.16095pt too wide) in paragraph at lines 150--151
+\T1/pplj/m/n/10 (+18) por-tion-ate amount of love for bloody, fiery shades of red and or-ange, 
+ []
+
+[8 <./Akira/tron-streaks.png (PNG copy)> <./Akira/chord-diagram.png>]
+<Akira/feverish-dream.png, id=158, 1920.17375pt x 1032.85875pt>
+File: Akira/feverish-dream.png Graphic file (type png)
+<use Akira/feverish-dream.png>
+Package pdftex.def Info: Akira/feverish-dream.png  used on input line 157.
+(pdftex.def)             Requested size: 311.98059pt x 167.81392pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--160
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--160
+
+ []
+
+<Akira/pre-corruption.png, id=159, 1918.16624pt x 1035.87pt>
+File: Akira/pre-corruption.png Graphic file (type png)
+<use Akira/pre-corruption.png>
+Package pdftex.def Info: Akira/pre-corruption.png  used on input line 163.
+(pdftex.def)             Requested size: 311.97638pt x 168.47704pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--166
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--166
+
+ []
+
+
+Overfull \hbox (0.14867pt too wide) in paragraph at lines 168--169
+\T1/pplj/m/n/10 (+11) he ^^Pmat-tered^^Q to those around him, a time far away from the mess of 
+ []
+
+[9 <./Akira/feverish-dream.png> <./Akira/pre-corruption.png>]
+
+LaTeX Warning: Marginpar on page 10 moved.
+
+<Akira/color-change.png, id=169, 1919.17pt x 1030.85126pt>
+File: Akira/color-change.png Graphic file (type png)
+<use Akira/color-change.png>
+Package pdftex.def Info: Akira/color-change.png  used on input line 171.
+(pdftex.def)             Requested size: 311.99321pt x 167.58212pt.
+<Akira/children.png, id=170, 1918.16624pt x 1029.8475pt>
+File: Akira/children.png Graphic file (type png)
+<use Akira/children.png>
+Package pdftex.def Info: Akira/children.png  used on input line 177.
+(pdftex.def)             Requested size: 311.97638pt x 167.49751pt.
+<Akira/bar.png, id=171, 1927.2pt x 1035.87pt>
+File: Akira/bar.png Graphic file (type png)
+<use Akira/bar.png>
+Package pdftex.def Info: Akira/bar.png  used on input line 183.
+(pdftex.def)             Requested size: 143.97504pt x 77.38658pt.
+<Akira/biker-tetsuo.png, id=172, 1927.2pt x 1035.87pt>
+File: Akira/biker-tetsuo.png Graphic file (type png)
+<use Akira/biker-tetsuo.png>
+Package pdftex.def Info: Akira/biker-tetsuo.png  used on input line 189.
+(pdftex.def)             Requested size: 143.97504pt x 77.38658pt.
+
+LaTeX Warning: Marginpar on page 10 moved.
+
+
+Overfull \hbox (0.15129pt too wide) in paragraph at lines 194--195
+\T1/pplj/m/n/10 (+15) Neo-Tokyo, in what appears to be something akin to Batman's origin 
+ []
+
+[10 <./Akira/color-change.png> <./Akira/children.png> <./Akira/bar.png (PNG copy)> <./Akira/biker-tetsuo.png (PNG copy)>]
+<Akira/shock.png, id=183, 1927.2pt x 1035.87pt>
+File: Akira/shock.png Graphic file (type png)
+<use Akira/shock.png>
+Package pdftex.def Info: Akira/shock.png  used on input line 197.
+(pdftex.def)             Requested size: 143.97504pt x 77.38658pt.
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+<Akira/cityscape.png, id=185, 1927.2pt x 1035.87pt>
+File: Akira/cityscape.png Graphic file (type png)
+<use Akira/cityscape.png>
+Package pdftex.def Info: Akira/cityscape.png  used on input line 209.
+(pdftex.def)             Requested size: 143.97504pt x 77.38658pt.
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+
+Overfull \hbox (35.48601pt too wide) in paragraph at lines 214--214
+\T1/fvm/m/n/8 matrix-[]green-[]color-[]change-[]netflix-[]original/$[][]\T1/pplj/m/n/8 (-20) , 
+ []
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+[11 <./Akira/shock.png (PNG copy)> <./Akira/cityscape.png (PNG copy)>] [12]
+
+LaTeX Warning: Marginpar on page 13 moved.
+
+<Ghost-in-the-Shell/changing.png, id=201, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/changing.png Graphic file (type png)
+<use Ghost-in-the-Shell/changing.png>
+Package pdftex.def Info: Ghost-in-the-Shell/changing.png  used on input line 228.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+LaTeX Warning: Marginpar on page 13 moved.
+
+<Ghost-in-the-Shell/soldier.png, id=202, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/soldier.png Graphic file (type png)
+<use Ghost-in-the-Shell/soldier.png>
+Package pdftex.def Info: Ghost-in-the-Shell/soldier.png  used on input line 234.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+LaTeX Warning: Marginpar on page 13 moved.
+
+<Ghost-in-the-Shell/afterfight.png, id=203, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/afterfight.png Graphic file (type png)
+<use Ghost-in-the-Shell/afterfight.png>
+Package pdftex.def Info: Ghost-in-the-Shell/afterfight.png  used on input line 240.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+LaTeX Warning: Marginpar on page 13 moved.
+
+
+Overfull \hbox (0.12439pt too wide) in paragraph at lines 246--247
+\T1/pplj/m/n/10 (+19) char-ac-ters in-volved([][]18[][], [][]19[][]). As Ma-jor re-marks af-ter swim-ming in the 
+ []
+
+[13
+
+ <./Ghost-in-the-Shell/changing.png (PNG copy)> <./Ghost-in-the-Shell/soldier.png (PNG copy)> <./Ghost-in-the-Shell/afterfight.png (PNG copy)>]
+<Ghost-in-the-Shell/deface.png, id=215, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/deface.png Graphic file (type png)
+<use Ghost-in-the-Shell/deface.png>
+Package pdftex.def Info: Ghost-in-the-Shell/deface.png  used on input line 249.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+<Ghost-in-the-Shell/innards.png, id=216, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/innards.png Graphic file (type png)
+<use Ghost-in-the-Shell/innards.png>
+Package pdftex.def Info: Ghost-in-the-Shell/innards.png  used on input line 255.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+
+LaTeX Warning: Marginpar on page 14 moved.
+
+<Ghost-in-the-Shell/deshell.png, id=217, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/deshell.png Graphic file (type png)
+<use Ghost-in-the-Shell/deshell.png>
+Package pdftex.def Info: Ghost-in-the-Shell/deshell.png  used on input line 261.
+(pdftex.def)             Requested size: 311.98512pt x 165.98584pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--265
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--265
+
+ []
+
+<Ghost-in-the-Shell/temperature-analysis.png, id=218, 1084.05pt x 481.8pt>
+File: Ghost-in-the-Shell/temperature-analysis.png Graphic file (type png)
+<use Ghost-in-the-Shell/temperature-analysis.png>
+Package pdftex.def Info: Ghost-in-the-Shell/temperature-analysis.png  used on input line 270.
+(pdftex.def)             Requested size: 479.99399pt x 213.33064pt.
+[14 <./Ghost-in-the-Shell/deface.png (PNG copy)> <./Ghost-in-the-Shell/innards.png (PNG copy)> <./Ghost-in-the-Shell/deshell.png (PNG copy)> <./Ghost-in-the-Shell/temperature-analysis.png>]
+
+LaTeX Warning: Marginpar on page 15 moved.
+
+
+LaTeX Warning: Marginpar on page 15 moved.
+
+
+LaTeX Warning: Marginpar on page 15 moved.
+
+<Ghost-in-the-Shell/silhoutte.png, id=227, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/silhoutte.png Graphic file (type png)
+<use Ghost-in-the-Shell/silhoutte.png>
+Package pdftex.def Info: Ghost-in-the-Shell/silhoutte.png  used on input line 283.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+Overfull \hbox (0.14595pt too wide) in paragraph at lines 288--289
+\T1/pplj/m/n/10 (+9) excruciating details by numerous reviewers [] [], I would like to focus 
+ []
+
+
+LaTeX Warning: Marginpar on page 15 moved.
+
+
+LaTeX Warning: Marginpar on page 15 moved.
+
+
+LaTeX Warning: Marginpar on page 15 moved.
+
+<Ghost-in-the-Shell/contact.png, id=231, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/contact.png Graphic file (type png)
+<use Ghost-in-the-Shell/contact.png>
+Package pdftex.def Info: Ghost-in-the-Shell/contact.png  used on input line 291.
+(pdftex.def)             Requested size: 296.39958pt x 157.69385pt.
+[15 <./Ghost-in-the-Shell/silhoutte.png (PNG copy)> <./Ghost-in-the-Shell/contact.png (PNG copy)>]
+<Ghost-in-the-Shell/voice.png, id=247, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/voice.png Graphic file (type png)
+<use Ghost-in-the-Shell/voice.png>
+Package pdftex.def Info: Ghost-in-the-Shell/voice.png  used on input line 300.
+(pdftex.def)             Requested size: 311.98512pt x 165.98584pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--303
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--303
+
+ []
+
+<Ghost-in-the-Shell/plane.png, id=248, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/plane.png Graphic file (type png)
+<use Ghost-in-the-Shell/plane.png>
+Package pdftex.def Info: Ghost-in-the-Shell/plane.png  used on input line 306.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+Overfull \hbox (2.32265pt too wide) in paragraph at lines 305--307
+ []  
+ []
+
+<Ghost-in-the-Shell/fish.png, id=249, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/fish.png Graphic file (type png)
+<use Ghost-in-the-Shell/fish.png>
+Package pdftex.def Info: Ghost-in-the-Shell/fish.png  used on input line 312.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+Overfull \hbox (2.32265pt too wide) in paragraph at lines 311--313
+ []  
+ []
+
+
+LaTeX Warning: Marginpar on page 16 moved.
+
+<Ghost-in-the-Shell/trash.png, id=255, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/trash.png Graphic file (type png)
+<use Ghost-in-the-Shell/trash.png>
+Package pdftex.def Info: Ghost-in-the-Shell/trash.png  used on input line 321.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+<Ghost-in-the-Shell/mannequin.png, id=256, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/mannequin.png Graphic file (type png)
+<use Ghost-in-the-Shell/mannequin.png>
+Package pdftex.def Info: Ghost-in-the-Shell/mannequin.png  used on input line 327.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+LaTeX Warning: Marginpar on page 16 moved.
+
+<Ghost-in-the-Shell/splitscreen.png, id=257, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/splitscreen.png Graphic file (type png)
+<use Ghost-in-the-Shell/splitscreen.png>
+Package pdftex.def Info: Ghost-in-the-Shell/splitscreen.png  used on input line 334.
+(pdftex.def)             Requested size: 287.02867pt x 152.70822pt.
+[16 <./Ghost-in-the-Shell/voice.png (PNG copy)> <./Ghost-in-the-Shell/plane.png (PNG copy)> <./Ghost-in-the-Shell/fish.png (PNG copy)> <./Ghost-in-the-Shell/trash.png (PNG copy)> <./Ghost-in-the-Shell/mannequin.png (PNG copy)> <./Ghost-in-the-Shell/splitscreen.png>]
+<Ghost-in-the-Shell/angel.png, id=263, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/angel.png Graphic file (type png)
+<use Ghost-in-the-Shell/angel.png>
+Package pdftex.def Info: Ghost-in-the-Shell/angel.png  used on input line 353.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+
+Overfull \hbox (0.1023pt too wide) in paragraph at lines 359--360
+\T1/pplj/m/n/10 (+15) most in-ter-est-ing char-ac-ter arc in this half of the film. Through-out the 
+ []
+
+<Ghost-in-the-Shell/arm.png, id=266, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/arm.png Graphic file (type png)
+<use Ghost-in-the-Shell/arm.png>
+Package pdftex.def Info: Ghost-in-the-Shell/arm.png  used on input line 362.
+(pdftex.def)             Requested size: 143.99464pt x 76.60965pt.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+) [17 <./Ghost-in-the-Shell/angel.png (PNG copy)> <./Ghost-in-the-Shell/arm.png (PNG copy)>]
+<Ghost-in-the-Shell/fin.png, id=274, 1284.8pt x 683.55376pt>
+File: Ghost-in-the-Shell/fin.png Graphic file (type png)
+<use Ghost-in-the-Shell/fin.png>
+Package pdftex.def Info: Ghost-in-the-Shell/fin.png  used on input line 405.
+(pdftex.def)             Requested size: 479.99521pt x 255.37245pt.
+ [18 <./Ghost-in-the-Shell/fin.png (PNG copy)>]
+
+LaTeX Warning: Marginpar on page 19 moved.
+
+
+Overfull \hbox (132.13945pt too wide) in paragraph at lines 421--421
+\T1/fvm/m/n/8 the-[]uncanny-[]similarities-[]between-[]ghost-[]in-[]the-[]shell-[]and-[]the-[]matrix$[][]\T1/pplj/m/n/8 (-20) , 
+ []
+
+
+Overfull \hbox (65.1414pt too wide) in paragraph at lines 421--421
+\T1/fvm/m/n/8 akira-[]anime-[]kanye-[]west-[]stronger-[]music-[]video-[]movie/$[][]\T1/pplj/m/n/8 (-20) , 
+ []
+
+[19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 104.
+
+LaTeX Warning: Marginpar on page 20 moved.
+
+
+LaTeX Warning: Marginpar on page 20 moved.
+
+
+LaTeX Warning: Marginpar on page 20 moved.
+
+
+Overfull \hbox (0.13208pt too wide) in paragraph at lines 423--424
+\T1/pplj/m/n/10 (+19) able num-ber of ob-ser-va-tions re-lated to color in the film, al-most all of 
+ []
+
+
+Overfull \hbox (0.11507pt too wide) in paragraph at lines 423--424
+\T1/pplj/m/n/10 (+14) sec-tions. While I learnt a lot about that film's unique take on Zom-bie 
+ []
+
+
+LaTeX Warning: Marginpar on page 20 moved.
+
+
+LaTeX Warning: Marginpar on page 20 moved.
+
+[20] [21]
+Overfull \hbox (0.12471pt too wide) in paragraph at lines 439--440
+\T1/pplj/m/n/10 (+17) com-bi-na-tion of Python, Ju-lia and R (in par-tic-u-lar, us-ing the chro-maR 
+ []
+
+[22
+
+
+] (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.lof
+Overfull \hbox (5.12854pt too wide) in paragraph at lines 14--14
+ [][] [][][]\T1/pplj/m/n/10 (-20) The in-nards of the bar are red, while the out-side world was a shade
+ []
+
+
+Overfull \hbox (0.96288pt too wide) in paragraph at lines 15--15
+ [][] [][][]\T1/pplj/m/n/10 (-20) Tetsuo is draped in green dur-ing the first bike chase (be-fore he has
+ []
+
+
+Overfull \hbox (16.28625pt too wide) in paragraph at lines 25--25
+ [][] [][][]\T1/pplj/m/n/10 (-20) The tem-per-a-ture anal-y-sis shows two dis-tinct phases in the film.[][] 14 
+ []
+
+
+Underfull \vbox (badness 1348) has occurred while \output is active []
+
+ [23
+
+]
+Overfull \hbox (8.92058pt too wide) in paragraph at lines 34--34
+ [][] [][][]\T1/pplj/m/n/10 (-20) A guardian an-gel. You can spot the out-line of Ba-tou's arm in the top
+ []
+
+)
+\tf@lof=\write7
+\openout7 = `paper.lof'.
+
+ (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.bbl [24]
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 8.50006pt on input line 11.
+pdfTeX warning (ext4): destination with the same identifier (name{cite.fast}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.13 \bibitem[Collison()]{fast}
+                               pdfTeX warning (ext4): destination with the same identifier (name{cite.cheeky}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 ...item[Contributors({\natexlab{a}})]{cheeky}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.descartes}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.24 ...m[Contributors({\natexlab{b}})]{descartes}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.freytag}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.29 ...tem[Contributors({\natexlab{c}})]{freytag}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.theseus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.36 ...tem[Contributors({\natexlab{d}})]{theseus}
+                                                  pdfTeX warning (ext4): destination with the same identifier (name{cite.matrix}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.41 \bibitem[Elvy(2020)]{matrix}
+                                 pdfTeX warning (ext4): destination with the same identifier (name{cite.tumblr}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.49 \bibitem[god in a~meat box(2018)]{tumblr}
+                                              pdfTeX warning (ext4): destination with the same identifier (name{cite.matrixGitS}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.56 \bibitem[Hilburn(2017)]{matrixGitS}
+                                        
+Overfull \hbox (41.92432pt too wide) in paragraph at lines 57--62
+\T1/fvm/m/n/10 the-[]uncanny-[]similarities-[]between-[]ghost-[]in-[]the-[]shell-[]and-[]the-[]matrix$[][]\T1/pplj/m/n/10 (-20) , 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{cite.ilya}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.63 \bibitem[Kuvshinov()]{ilya}
+                                pdfTeX warning (ext4): destination with the same identifier (name{cite.akira-nerdwriter}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.68 \bibitem[Nerdwriter(2016)]{akira-nerdwriter}
+                                                 pdfTeX warning (ext4): destination with the same identifier (name{cite.stronger}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.79 \bibitem[Peters(2018)]{stronger}
+                                      [25
+
+]pdfTeX warning (ext4): destination with the same identifier (name{cite.reddit}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.93 \bibitem[Users(2018)]{reddit}
+                                  )
+No file paper.ind.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 459.
+[26]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 459.
  (/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 104.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 104.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 459.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 459.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 104.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 459.
  ) 
 Here is how much of TeX's memory you used:
- 14600 strings out of 492649
- 217337 string characters out of 6129621
- 439380 words of memory out of 5000000
- 18122 multiletter control sequences out of 15000+600000
- 65631 words of font info for 156 fonts, out of 8000000 for 9000
+ 15279 strings out of 492649
+ 228613 string characters out of 6129621
+ 459942 words of memory out of 5000000
+ 18535 multiletter control sequences out of 15000+600000
+ 111502 words of font info for 311 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,11n,54p,1042b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.pdf" (4 pages, 446940 bytes).
+ 45i,15n,54p,1825b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on "/Users/nalinbhardwaj/Documents/assignments/Spring 2020/LTCS 111/.texpadtmp/paper.pdf" (26 pages, 32143551 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 36379 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 458 PDF objects out of 1000 (max. 8388607)
+ 359 compressed objects within 4 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 58145 words of extra memory for PDF output out of 61914 (max. 10000000)
 

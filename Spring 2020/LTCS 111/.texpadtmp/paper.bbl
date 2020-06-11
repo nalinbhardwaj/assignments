@@ -1,4 +1,4 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,11 +10,91 @@ Rowan Castle.
 \newblock Nasir-ol-molk mosque, shiraz, iran.
 \newblock \url{https://www.pinterest.com/pin/240590805062912780/}.
 
+\bibitem[Collison()]{fast}
+Patrick Collison.
+\newblock Fast.
+\newblock \url{https://patrickcollison.com/fast}.
+
+\bibitem[Contributors({\natexlab{a}})]{cheeky}
+TV~Tropes Contributors.
+\newblock Cheeky mouth.
+\newblock \url{https://tvtropes.org/pmwiki/pmwiki.php/Main/CheekyMouth},
+  {\natexlab{a}}.
+
+\bibitem[Contributors({\natexlab{b}})]{descartes}
+Wikipedia Contributors.
+\newblock Cogito, ergo, sum.
+\newblock \url{https://en.wikipedia.org/wiki/Cogito,_ergo_sum}, {\natexlab{b}}.
+
+\bibitem[Contributors({\natexlab{c}})]{freytag}
+Wikipedia Contributors.
+\newblock Dramatic structure: Freytag's analysis (falling action).
+\newblock
+  \url{https://en.wikipedia.org/wiki/Dramatic_structure\#Falling_action},
+  {\natexlab{c}}.
+
+\bibitem[Contributors({\natexlab{d}})]{theseus}
+Wikipedia Contributors.
+\newblock Ship of theseus.
+\newblock \url{https://en.wikipedia.org/wiki/Ship_of_Theseus}, {\natexlab{d}}.
+
+\bibitem[Elvy(2020)]{matrix}
+Craig Elvy.
+\newblock Why matrix is so green on netflix and how to watch with original
+  color.
+\newblock
+  \url{https://screenrant.com/matrix-green-color-change-netflix-original/}, apr
+  2020.
+
+\bibitem[god in a~meat box(2018)]{tumblr}
+god in a~meat box.
+\newblock The montage sequence in gits.
+\newblock
+  \url{https://echo-from-the-void.tumblr.com/post/180722199329/the-montage-sequence-in-gits},
+  dec 2018.
+
+\bibitem[Hilburn(2017)]{matrixGitS}
+Trey Hilburn.
+\newblock The uncanny similarities between ghost in the shell and the matrix.
+\newblock
+  \url{https://birthmoviesdeath.com/2017/03/31/the-uncanny-similarities-between-ghost-in-the-shell-and-the-matrix},
+  mar 2017.
+
+\bibitem[Kuvshinov()]{ilya}
+Ilya Kuvshinov.
+\newblock Ilya kuvshinov's instagram page.
+\newblock \url{https://www.instagram.com/kuvshinov_ilya}.
+
+\bibitem[Nerdwriter(2016)]{akira-nerdwriter}
+The Nerdwriter.
+\newblock Akira: How to animate light.
+\newblock \url{https://youtu.be/xf0WjeE6eyM}, nov 2016.
+
+\bibitem[Originals(2016)]{tiff-interview}
+TIFF Originals.
+\newblock Mamoru oshii read ghost in the shell over 20 times before he could
+  direct it.
+\newblock \url{https://youtu.be/oM-rVr7Knzw}, apr 2016.
+
+\bibitem[Peters(2018)]{stronger}
+Megan Peters.
+\newblock Remember when kanye west made an 'akira' inspired music video?
+\newblock
+  \url{https://comicbook.com/anime/news/akira-anime-kanye-west-stronger-music-video-movie/},
+  mar 2018.
+
 \bibitem[Piolle(2009)]{cathedral}
 Guillaume Piolle.
 \newblock The north rose window of the chartres cathedral.
 \newblock
   \url{https://commons.wikimedia.org/wiki/File:Chartres_-_cathédrale_-_rosace_nord.jpg},
   feb 2009.
+
+\bibitem[Users(2018)]{reddit}
+Reddit Users.
+\newblock Iconic and beautiful montage sequence from ghost in the shell (1995).
+\newblock
+  \url{https://www.reddit.com/r/videos/comments/81uwhp/iconic_and_beautiful_montage_sequence_from_ghost/},
+  mar 2018.
 
 \end{thebibliography}

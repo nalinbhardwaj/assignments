@@ -9,6 +9,9 @@
 \usepackage{booktabs} % Better horizontal rules in tables
 
 \usepackage{graphicx} % Needed to insert images into the document
+
+\usepackage{epigraph}
+
 \graphicspath{{graphics/}} % Sets the default location of pictures
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio} % Improves figure scaling
 
@@ -19,6 +22,8 @@
 \newcommand{\hangstar}{\makebox[0pt][l]{*}} % New command to create asterisks in tables which take up no horizontal space - this improves column spacing
 
 \usepackage{xspace} % Used for printing a trailing space better than using a tilde (~) using the \xspace command
+
+\usepackage[utf8]{inputenc}
 
 \newcommand{\monthyear}{\ifcase\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\space\number\year} % A command to print the current month and year
 
@@ -45,7 +50,7 @@
 
 \author{Nalin Bhardwaj} % Author
 
-\publisher{An Analytical Look at Horror Films} % Publisher
+\publisher{An Analytical Look at Animated Horror} % Publisher
 
 %----------------------------------------------------------------------------------------
 
@@ -59,13 +64,14 @@
 
 %----------------------------------------------------------------------------------------
 
+\setcounter{tocdepth}{1}
 \tableofcontents % Print the table of contents
 
 \mainmatter
 
 % Proposal
 
-\chapter{Proposal}
+\chapter{Introduction}
 \label{ch:0}
 
 One of my favourite “things of beauty” are stained glass windows. By themselves, they contain intricate works of art with vivid colour palettes that overlay silhouettes of the outside world. They’re like a dreamy, imaginative capture of the beauty of nature and of the precise capability of human to weave intricacy into the commonplace object. But what make stained glass an extremely unique medium is its shadow. The shadows stained glass windows cast serve a utilitarian architectural purpose (that of lighting insides of churches and other buildings) while being a deep expression of colour and emotion. It is almost as if every stained glass panel has the capability to tell a multifaceted story by itself.
@@ -73,20 +79,369 @@ One of my favourite “things of beauty” are stained glass windows. By themsel
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{graphics/cathedral.jpg}
 \caption{The north rose window of the Chartres Cathedral}
-\label{fig:marginfig}
+\label{fig:marginfig1}
 \end{marginfigure}
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{graphics/shadows.jpg}
 \caption{Nasir-ol-Molk Mosque, Shiraz, Iran}
-\label{fig:marginfig}
+\label{fig:marginfig2}
 \end{marginfigure}
 
 Films, as an art form, have the unique ability to fully engage our auditory and visual senses, just like the beautiful imagery of stained glass. Unfortunately, a side effect of the format of films is that our untrained brains are so engrossed in the momentary frames that they tend to miss the larger patterns of filmmaking. They neglect the “shadows” films cast. Most of us give very little thought to the underlying philosophy of cuts, narrative structures and sound design.
 
-In my essay, I want to explore the “shadows” of these stained glass windows (i.e. films) to understand the patterns exhibited by the church (i.e the art of filmmaking). I will take an objective, data-backed approach to analysing films, using code to make observations about films. My project will be broadly categorised into three parts: the visual, the auditory and the written. In the visual part, I will look at the frames that compose films, analysing colour palettes and tones and looking at some of the psychological underpinnings of colour theory in film (and horror). The second part will look at sound as a complementary art form, focusing on different aspects of background music and sound effects as a tool that has the power to manipulate emotion. The final third part will bind my observations together. By looking at screenplays and their final products, I will analyse the manifestation of the uncanny in film: the medium that has made horror one of the most influential, accessible agents of expression.
+In my essay, I want to explore the “shadows” of these stained glass windows (i.e. films) to understand the patterns exhibited by the church (i.e the art of filmmaking). I will take an objective, data-backed approach to analysing films, using code to make observations about films. My project will primarily focus on the visuals of a film, and in particular, I will look at two seminal works, Akira and Ghost in the Shell (1995). I will utilise the atoms of a movie: the frames themselves. Using these frames, I will analyse colour palettes and tones and look at some of the psychological underpinnings of colour theory in film (and horror). Firstly, however, let's discuss some basic ideas of color theory and introduce the visualisations that will follow in the rest of this paper.
+
+\chapter{Dimensions of a frame}{\textit{A picture is worth a thousand words.}}
+
+\bigskip
+
+By raw numbers, your average film is $2$ hours long and uses the industry standard frame-rate of $23.976$ frames per second. That means the average film is composed of $2 \cdot 60 \cdot 60 \cdot 23.976 = 172627.2 \simeq$ 150 thousand pictures. If the cliché saying is anything to go by, this rigorous analysis tells us that every film is worth about 170 million words. Since analysing these 170 million words individually is beyond the scope of human lifetime, we need tools. In my paper, I employ graphic visualisations to summarise this data into something meaningful. Each film's analysis opens with a poster-like page with all these visualisations chunked together.
+
+One of the most representative visualisations of a film is the \textbf{movie barcode}. A movie barcode is generated by taking every frame of a movie, extracting its dominant color, and skewing it to be only a pixel wide slice. By lining up these slices in a row, we can create a barcode-like image of an entire film. The dominant color of a frame is the most representative color based on a k-means clustering. In its essence, a movie barcode is a method of compression that represents the movie in a single image.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{graphics/colorwheel}%
+  \caption{Color wheel}%
+  \label{fig:wheel}%
+\end{marginfigure}
+
+Color, as an abstract concept, is very hard to describe. However, to make its study more discrete and accessible, computers and cameras use the HSL (Hue, Saturation and Luminosity) scheme to represent color. By definition, hue refers to the color of a point, as found along the spectrum or a color wheel~\ref{fig:wheel}. Saturation indicates the intensity of a hue. Higher saturation hues appear 'stronger', for example being 'more red' or 'more blue'. Luminosity is a measure of how bright or dark a hue is. Physically, luminosity corresponds to amplitude and consequent energy of electromagnetic waves of light. To study these three characteristics, I visualise them in the form of \textbf{hue/sat/lum channel graph plots} (laid on top of the barcodes) and the \textbf{hue/sat/lum channel derivative plots} (which represent the change in the values expressed by these channels). To measure the perceived temperature of the film, I use a \textbf{Temperature Analysis plot}, which measures the distance of the hue of each frame from pure red, the color we perceive as warm/hot.
+
+To visualise the usage of each color, I use \textbf{chord diagrams}, which display the relationships between colors in frames. Each frame is arranged radially around, with the color transitions between frames drawn as arcs connecting the source with the endpoint. Consequently, this also visualises the frequency of a color in the frames as well.
+
+\blankpage
+
+\chapter{Akira: Chroma key}
+\label{ch:1}
+
+Even at a preliminary glance, the data reveals some interesting patterns that we would have missed otherwise. Let's break down some of the more obvious ones first, and dive into some more interesting analyses later.
+
+\begin{figure*}[h]
+  \includegraphics[width=\linewidth]{Akira/temperature-analysis}%
+  \caption{Color temperature analysis follows an interesting trend during the second half of the film.}%
+\end{figure*}
+
+
+First, let us look at the temperature analysis numbers. This graph seems to show that in the first half, as the film progresses, the color palette of Akira starts feeling colder, with heavier shades of blue. In frames, this manifests itself as a transition from city shots and exciting bike chases to hospitals and sewers. The second half of this graph, on the other hand, shows a much more interesting transition. Akira uses color as a means to build up suspense and bakes the classic Freytag five-act structure's "Act 4: Falling Action" \cite{freytag} into its color scheme quite literally. This temperature analysis graph clearly shows that the entire second-half of the film is simply a giant build up to its concluding “singularity”.
+
+Secondly, observing the dips in this temperature analysis graph, particularly the ones around 1000 seconds and 6500 seconds into the film, I noticed another interesting use of the color red in Akira: Tron streaks. Throughout the film, Akira uses red and orange streaks of light that signify speed and agility, similar to the light trails Tron used for its Light Cycles. In a confusing, multi-storyline plot, these streaks remind the viewers’ who they’re rooting for. For instance, during the first bike chase, only our protagonists’ have bikes that leave behind trails. The antagonists are, on the other hand, on bikes that feel slow and unwieldy simply because they don’t leave trails.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Akira/tron-streaks}%
+  \caption{Hand drawn speed. 3:51}%
+  \label{fig:fullfig}%
+\end{marginfigure}
+
+\section{Painting the "good" vs. "evil" dichotomy}
+
+Mystery/horror stories often face a deep underlying challenge: how do you establish and distinguish between the “good” and the “evil” dichotomy while maintaining curiosity and fear in your audience’s mind? This challenge, when used well, can be, in fact, a gift. I know my heart was racing at the moment Jordan Peele’s Get Out revealed that Rose Armitage, one of the main characters, is actually a cold-hearted villain herself, when she’s been built up all along to be on our protagonist, Chris’ team. This experimentation is not unique to screenwriting. Even Sophocle's \textit{Oedipus Rex} sets up its tragic “catharsis” moment by manipulating this dichotomy.
+
+While Get Out and Oedipus Rex are clear-cut examples of the use of this dichotomy, Akira, on the other hand, does something absolutely stunning with this challenge: it subtly uses color to manipulate the audience’s interpretations.
+
+Let’s take a look at the chord diagram of Akira again.
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Akira/chord-diagram}%
+  \caption{Chord diagram}%
+  \label{fig:fullfig}%
+\end{figure}
+
+Notice something odd? Clearly, Katsuhiro Otomo shows a disproportionate amount of love for bloody, fiery shades of red and orange, but more interestingly, he seems to under-utilize the color green. It can’t be an arbitrary coincidence that an acclaimed artist such as Otomo specifically chose to underuse green, the G of RGB (one of the most popular characterizations of color space in art). I believe the use of green (or the lack thereof) holds very intentional purpose in Otomo’s masterpiece.
+
+\section{Signaling with color}
+
+Otomo’s sparing use of green makes it a rather easy color to analyze. Let’s look at some of the things that distinctively green in Akira:
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{Akira/feverish-dream}%
+    \caption{Dreams. 35:32}
+    \label{fig:dream}
+\end{figure}
+
+\begin{figure}[h]
+		\includegraphics[width=\linewidth]{Akira/pre-corruption}%
+        \caption{Pre-corruption Tetsuo. 36:21}
+        \label{fig:corruption}
+\end{figure}
+
+Figure~\ref{fig:dream} is a terrific scene captured from a feverish dream Tetsuo has after suffering from a seizure induced by his exposure to the supernatural powers. Notice the only two green entities in this frame: the young child that is Tetsuo, and his caring teacher. Tetsuo, a brooding teenager now, is reminiscing about his childhood, a time where he “mattered” to those around him, a time far away from the mess of Neo-Tokyo’s ruthless gang wars and more importantly, a time where the supernatural entity hadn’t trapped him. \sidenote{Even the camera’s placement reinforces this perspective. Tetsuo is looking at these moments from an inescapable, dark hallway, trapped by the entity that is slowly infecting his mind.} Even in figure~\ref{fig:corruption}, green is used to signify the “pre-corruption” Tetsuo: a rational, caring human being. However, just a couple scenes later, these same clothes acquire a different color, in figure~\ref{fig:color-change}, when the “post-corruption” Tetsuo shows us his powers in a destructive rampage. Otomo seems to be reserving green for the "good".
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Akira/color-change}%
+  \caption{Same clothes, different man. 1:01:03}%
+  \label{fig:color-change}%
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Akira/children}%
+  \caption{Children. 1:00:13}%
+  \label{fig:children}%
+\end{figure}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Akira/bar}%
+  \caption{The innards of the bar are red, while the outside world was a shade of green. 2:59}%
+  \label{fig:bar}%
+\end{marginfigure}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Akira/biker-tetsuo}%
+  \caption{Tetsuo is draped in green during the first bike chase (before he has encountered the child). 12:42}%
+  \label{fig:biker}%
+\end{marginfigure}
+
+In fact, when you notice this, all other uses of green start making sense. While there are too many to individually comment on (for instance,~\ref{fig:bar} and~\ref{fig:biker}), I will make remark on another major use: the children. The children have cyan/green skin tones (figure~\ref{fig:shock}). While, in the beginning of the film,~\ref{fig:children}, this skin tone is used for its “shock value” as the audience looks at a scary, alien child destroy the city of Neo-Tokyo, in what appears to be something akin to Batman's origin story. As we later discover, though, this is just a subtle hint that these children are the “team” we will eventually root for.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Akira/shock}%
+  \caption{Alien. 9:46}%
+  \label{fig:shock}%
+\end{marginfigure}
+
+Animation, and cel drawing in particular, allows storytellers to infuse cues into the very foundations of environments, and Otomo and the team working on Akira clearly know how to use colors to signal crumbs of information into their audiences’ mind.
+
+\section{Negatives: establishing a dystopia}
+
+Establishing a dystopic setting is a rather non-trivial task, but Akira manages to establish the city of Neo-Tokyo as a post apocalyptic metropolis rather quickly and smoothly. Director Katsuhiro Otomo cleverly starts the film with a bike chase, using the chase to weave a montage of cityscapes (such as~\ref{fig:cityscape}) into plot progression. In all the sweeping hand drawn shots, however, the color green is quite noticeably missing. Truly, the lack of green, here is really a lack of greenery. There is nothing natural about the sprawling futuristic metropolis that is Neo-Tokyo. This has the effect of instilling an odd sense of unease, of unfamiliarity, in the viewers' mind. And of course, this city is at sharp contrast with the Tokyo after the "singularity" event at the end of the film, where we see water flood into Tokyo, and sun rays hit the city on this new dawn. A dystopia has been terraformed.\sidenote{Nature is healing, we were the virus?}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Akira/cityscape}%
+  \caption{Neo-Tokyo. 3:58}%
+  \label{fig:cityscape}%
+\end{marginfigure}
+
+It is notable, however, that lack of green is not a defining feature of all dystopian settings. While Akira uses it beautifully to produce a sense of cyberpunk urbanism, there are other films such as the Matrix trilogy\cite{matrix}, which tint everything in green, and still portray dystopias in a captivating manner. As director Katsuhiro Otomo said in an interview\cite{akira-nerdwriter} , he wanted [Neo-]Tokyo itself to be a major character in Akira. In Otomo’s world, the transition between a futuristic metropolis and a flooded post apocalyptic city would be Tokyo’s character arc. Treating a city as a character allows Akira to do something special: as a viewer, it feels as if we can assign emotion and texture to a city, it feels intuitive.
+
+\blankpage
+
+\chapter{Ghost in the Shell: Rotoscoping}
+\label{ch:2}
+
+\marginnote{These visualisations also emphasise the ideas described in \nameref{ch:1}. Ghost in the Shell is a lot darker than Akira. Yet, Ghost in the Shell's scenes of darkness are punctuated by the team using a green and blue color palette.}
+
+Ghost in the Shell is a masterpiece of a philosophical text framed as a surreal exploration of identity and consciousness. To reduce it to mere graphic visualisations is somewhat reductive to say the least, but nonetheless, these graphics can help us observe some interesting aspects of this retro-futuristic creepy film. As director Mamoru Oshii noted in an interview, Ghost in the Shell has extremely complicated origins in its manga, and he thought his job, as a director, was to condense the essence of the original universe into 80 minutes of reel.\footnotemark{}\footnotetext{"It was a very difficult manga. After he told me to do it, I had to re-read it 20 more times. It's a very difficult, complicated manga. So I thought my job as a director is to make this complicated book into a simple movie." $\sim$ Mamoru Oshii, TIFF Interview} My aim with the single page of visualisations was to condense these 80 minutes of reel into 1 letter-sized page.
+
+\section{Dermatology}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/changing}%
+  \caption{Motoko, completely oblivious to Batou's presence. 29:36}%
+  \label{fig:changing}%
+\end{marginfigure}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/soldier}%
+  \caption{Dress code? 03:50}%
+  \label{fig:soldier}%
+\end{marginfigure}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/afterfight}%
+  \caption{A human reminder. 24:03}%
+  \label{fig:afterfight}%
+\end{marginfigure}
+
+
+For starters, it's quite evident from the movie barcode that the film is really about humanity. The film is full of close-up shots of faces, of the "shells" we are trapped in, and this focus is even more evident in the movie barcode, which looks akin to a skin tone chart. Even when the frames themselves focus a lot on close-up shots of "shells", Ghost in the Shell is, in part, a philosophical exploration of the inevitable second order effects of the societal disregard for human bodies. There are many scenes where we see nude shots of "Puppets" who seem oblivious to their surroundings (\ref{fig:changing},~\ref{fig:soldier},~\ref{fig:afterfight}). In any other anime film, we might be quick to dismiss these suggestive, voyeuristic shots as "fan service", but Ghost in the Shell uses these to express something deeper. When bodies are purposeless shells, what does it even mean to sexualise them? What happens to our primitive social structures that use reproduction and voyeurism as a means of establishing society? Another, more subtle second order effect resolves itself in the actions of soldiers and criminals. Action sequences in Ghost in the Shell are accompanied with gory shattering of the shells of the characters involved(\ref{fig:deface},~\ref{fig:innards}). As Major remarks after swimming in the sea (about 30 minutes into the film), when prosthetic bodies grant us this liberty to show a complete disregard for our physical wellbeing, how does one even feel "fear, anxiety, isolation, and darkness", the feelings that are the essence of "hope"? In a poetic way, the climax of the film is a subtle consolidation of these two ideas. We see Major, stripped of her clothes, completely devour her "shell" in her manic quest to understand the "ghost" inside it~\ref{fig:deshell}.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/deface}%
+  \caption{Defaced. 1:13:22}%
+  \label{fig:deface}%
+\end{marginfigure}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/innards}%
+  \caption{Innards. 47:49}%
+  \label{fig:innards}%
+\end{marginfigure}
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{Ghost-in-the-Shell/deshell}%
+    \caption{Shedding the shell. 1:05:10}
+    \label{fig:deshell}
+    \setfloatalignment{b}
+\end{figure}
+
+Let's take a look at the temperature analysis plot of the film Ghost in the Shell.
+
+\begin{figure*}[h]
+	\includegraphics[width=\linewidth]{Ghost-in-the-Shell/temperature-analysis}%
+    \caption{The temperature analysis shows two distinct phases in the film.}
+\end{figure*}
+
+Looking at this graph, it seems there is a striking change in tone at around 40 minutes into the movie. While the first half of the film seems to oscillate between cold and warm colors, the second half of the film has a consistent cold tone to it. In plot, this change seems to occur around the scene where we first learn of the puppetmaster's escape. This change serves a subtle narrative purpose: The first half of the film focuses on the age-old existential questions of the Ship of Theusus \cite{theseus} and Rene Descarte's "Cogito Ergo Sum" \cite{descartes}, whereas the second half of the film focuses more on exposition and thriller action.
+
+Notably, this change of pacing is also marked by shots that have an overwhelmingly tan/melanin colour scheme, as shown by the movie barcode at about 42 minutes. These are actually two successive shots, the first being a close up of Batou in his characteristic tan jacket, towering next to the Major, and the other of Section 9 Security Chief's lush oak offices, which juxtaposes the semi-human foreground characters with an organic background.
+
+\section{The horror of Socrates}
+
+From the perspective of an analysis, the first half of Ghost in the Shell is quite unique. While we learn about this world, we encounter the questions Motoko and there others have struggled to deal with, and now, we, the audience, are forced to fence with them in our own lives. Even our very first intimate introduction to Motoko portrays her as a silhouette of a human being, a servant for the background city~\ref{fig:silhoutte}. There is something starkly inhuman about this frankenstein body that just gets up and leaves for work in sync with the unsettling retro-dystopic background music. From the very beginning, the audience is curious about the true nature of the identity of Major Motoko Kusanagi.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/silhoutte}%
+  \caption{A ghost (Motoko) in the shell (Section 9). 07:42}%
+  \label{fig:silhoutte}%
+\end{marginfigure}
+
+The most iconic scene in Ghost in the Shell, however, is the the montage of cityscapes shown about 33 minutes into the film. In a 3 minute 20 second interlude, we see 35 different shots of the city from the perspective of Major. While this has been picked over for its excruciating details by numerous reviewers \cite{reddit} \cite{tumblr}, I would like to focus on the “uncanny” interpretation of these visuals. To do so, however, we must rewind to the preceding scene~\ref{fig:contact}.
+
+\begin{figure}[h]
+	\includegraphics[width=0.95\linewidth]{Ghost-in-the-Shell/contact}%
+    \caption{Bubbling to the surface. 28:28}
+    \label{fig:contact}
+    \setfloatalignment{b}
+\end{figure}
+
+We see Motoko and Batuo reflect on swimming, and this is the first time where we explicitly see them bring up the philosophical questions that have plagued humanity for centuries. However, the most striking interrogation comes towards the end of this scene. We (and the characters) hear an ominous, anonymous voice questioning, “Now it's like we're looking through a mirror. And what we see is a dim image.”. As if searching for the source of this voice, Motoko looks around, until she stops her gaze right at the camera. Are we the voice?
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{Ghost-in-the-Shell/voice}%
+    \caption{33:00}
+    \label{fig:voice}
+\end{figure}
+
+\begin{marginfigure}[-20cm]
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/plane}%
+  \caption{A manmade plane? 33:08}%
+  \label{fig:plane}%
+\end{marginfigure}
+
+\begin{marginfigure}[-5cm]
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/fish}%
+  \caption{$\ldots$ or a fish? 33:09}%
+  \label{fig:fish}%
+\end{marginfigure}
+
+
+The camera quickly cuts to the aforementioned montage of cityscapes, and all the audience can do now is question their own humanity. There are extremely suggestive shots of what director Momoru Oshii wants us to think about, from \ref{fig:plane} vs.~\ref{fig:fish} to~\ref{fig:trash} and~\ref{fig:mannequin}, but the most chilling shot is the one of Motoko and another copy of her shell staring at each other across a window in~\ref{fig:splitscreen} (what she sees is, perhaps, "a dim image"?). If Motoko’s shell is just a cheap and random piece of trash from a black market, what even makes her \textit{her}?
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/trash}%
+  \caption{Trash. 33:33}%
+  \label{fig:trash}%
+\end{marginfigure}
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/mannequin}%
+  \caption{Lifeless mannequin shells. 36:06}%
+  \label{fig:mannequin}%
+\end{marginfigure}
+
+
+\begin{figure}[h]
+	\includegraphics[width=0.92\linewidth]{Ghost-in-the-Shell/splitscreen}%
+    \caption{33:51 vs. 33:56}
+    \label{fig:splitscreen}
+    \setfloatalignment{b}
+\end{figure}
+
+\section{The solicitude of \textbf{Heimat}}
+
+\setlength{\leftskip}{1cm}
+
+\textbf{Heimat (German)}: \textit{Heimat} functions as the close environment that is understandable and transparent, as a frame, in which behavioral expectations are met, in which reasonable, expectable actions are possible – in contrast to foreignness and alienation, as a sector of appropriation, of active saturation, of reliability.
+
+\setlength{\leftskip}{0pt}
+
+\bigskip
+
+The English language, unfortunately, has no equivalent for the word \textit{Heimat}, but it is perhaps the only word appropriate for the feelings of Major Motoko. Motoko is facing a deep identity crisis, and starkly lacks any sense of \textit{Heimat} in her life. Motoko does everything in her power to protect and serve the citizens of Section 9, but in exchange, the city should owe her a sense of belonging. Motoko, however, feels robbed of this primal feeling, and this is what defines her soul-searching journey.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/angel}%
+  \caption{A guardian angel. You can spot the outline of Batou's arm in the top of the frame. 1:13:21}%
+  \label{fig:angel}%
+\end{marginfigure}
+
+
+It is quite fitting then, that the movie ends in an abandoned museum, with Motoko getting shot up by the police force and getting left to die. The entire second phase of the film is coloured with a dark, gothic color scheme shrouded in rain. While the environment itself is a portrayal of melancholic feelings of identity, the foreground of the second half of the film is continually filled with action. We, the audience, are still coming to terms with the emotions of the characters, and more importantly, we are still grokking the philosophical questions raised by the first half of the film. The second half of Ghost in the Shell balances exposition, teaching us a lot more about the characters and their motifs, with thriller action. While Motoko herself has interesting character developments, Batou probably has the most interesting character arc in this half of the film. Throughout the film, Batou has served as our human representative in this confusing retro-futuristic world, and now, we see how much he truly cares about Major. He acts cautiously, but he still encourages Motoko to take the lead and find the answers to her questions. Whether it is the boat scene or the aftermath of the truck driver, we see Batou as Major's guardian angel, and even at the end, Batou is the one who saves Motoko at the museum. Even director Mamoru Oshii subtly nods at this interpretation, literally showing Batou's arm as Major's guardian angel in successive shots~\ref{fig:angel} and~\ref{fig:arm}.
+
+\begin{marginfigure}
+  \includegraphics[width=\linewidth]{Ghost-in-the-Shell/arm}%
+  \caption{The shot right after~\ref{fig:angel}. 1:13:25}%
+  \label{fig:arm}%
+\end{marginfigure}
+
+
+Since it holds a lot of cryptic meanings, I would also like to explore the dialogue of the very last scene:
+
+\bigskip
+
+\setlength{\leftskip}{1cm}
+
+{
+	\fontfamily{cmr}\selectfont
+	\textbf{Major}: Is this your safe house?
+
+	\textbf{Batou}: Yep. You're the first person to ever come here. \textemdash~And you're welcome to stay as long as you like.
+
+	\textbf{Major}: Thanks, but I am going.
+
+	$\vdots$
+
+	\textbf{Major}: "When I was a child, my speech was that of a child. My feelings and thoughts too were those of a child. Now that I have become a man, I part with the child-like ways."
+
+	$\vdots$
+
+	\textbf{Major}: Well, where shall I go? \textemdash~The net is vast and infinite.
+}
+
+\setlength{\leftskip}{0pt}
+
+\bigskip
+
+
+The movie ends with Motoko/Puppet Master waking up in Batou's safe haven, where Batou welcomes her and requests her to stay with him. But having merged with the Puppet Master, she is a completely new being, as she acknowledges in her dialogue. She chooses to forego the human bond Batou has offered throughout the film. Now, the only space that can provide her Heimat is the "vast and infinite net".
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\begin{figure*}[h]
+	\includegraphics[width=\linewidth]{Ghost-in-the-Shell/fin}%
+    \caption{1:17:51}
+\end{figure*}
+
+\chapter{Reflections}{\textit{“Now it's like we're looking through a mirror. And what we see is a dim image.”} $\sim$ Ghost in the Shell}
+
+\bigskip
+
+My main goal with writing my film analysis "Shadows of Stained Glass" was to present an analysis of movies that have influenced film and media greatly in a fresh light. Most movie analyses and reviews I have read seem to focus on rather micro instances in films. For instance, they'll focus on one particular scene or one particular set of dialogues to derive general models of the characters/environments. While this approach has some merit, my idea was to use computer science tools to analyse frames of a movie at a larger scale. Having done so, I have learnt a lot able to make a lot of macro observations about the films Akira and Ghost in the Shell (and even Train To Busan) and learnt a lot about the methodology of analyses and merits/demerits of my approach.
+
+\section{The films}
+
+I first watched Ghost in the Shell a few years ago. In my first viewing, it appeared to be a beautifully drawn masterpiece that was plagued by a poorly written plot that tried to do too much. When I watched it now, however, I had very different impressions. Ghost in the Shell definitely features a very complicated plot with many different interpretations and expectations, but regardless, it is quite an art piece that informs the ideas of multiple twenty first century science fiction films. In fact, Netflix recently released the web series "Ghost in the Shell: SAC\_2045" based on the same universe. I also learned a lot about this series, and its animation inspiration described by lead artist Ilya Kuvshinov on his social media pages\cite{ilya}.
+
+Akira, on the other hand, was a very surprising case study of cel drawing for me. It inspired me to read a lot about the process of cel drawing and the impact it has had on anime, compared to the standard Western techniques my eyes are more familiar with. 
+
+In the process of working on this project, I also learned about the many different films/anime that took inspiration from these films. For instance, the iconic green text cascades that we associate with The Matrix actually originated in Ghost in the Shell\cite{matrixGitS}. Similarly, Kanye West's most popular song "Stronger" is inspired by Akira and its soundtrack, and the music video for Stronger even recreates the color schemes we discussed in \nameref{ch:1}\cite{stronger}.
+
+I also carried out a deep investigation of the film Train to Busan, but ended up not using it for my paper. While I had a fairly reasonable number of observations related to color in the film, almost all of them felt much more trivial compared to the ones I made in the other sections. While I learnt a lot about that film's unique take on Zombie apocalypses, this experiment taught me a lot more about animation. In animation, the environments and the characters are in complete control of the director. They can very easily break laws of physics as long as their products "look convincing". For instance, I learnt about the Cheeky Mouth/Side Mouth effect\cite{cheeky}. Many animated films, such as Seoul Station, stretch and manipulate character anatomy in awkward ways that "look convincing" to the camera, but are impractical in a real 3D space. Overall, the liberty artists have with space, time and characters in animated storyboards makes it a powerful, unique medium, where experiments such as \ref{fig:color-change} can be easily pulled off.
+
+\section{Methodology}
+
+When I started working on this project, I was convinced that all good film analyses will include larger scale data mining/analysis such as mine. However, I discovered many shortcomings of this method in the process, and I'm not completely convinced anymore that this is the "future" of film analysis.
+
+For starters, this method is much, much more time consuming than a standard movie review/analysis, for which a reviewer may watch a film a few times. In comparison, neglecting the actual visualisations, simply processing all the frames of a film takes over 4-5 hours. In a world where speed is king \cite{fast}, especially in the world of media, these turnaround times are simply not viable for journalists working alone. Perhaps, this method becomes much more viable when you have large teams of software engineers.
+
+Secondly, as I recognised the failure of my methods with respect to the film Train To Busan, this method probably doesn't yield useful/strong results for non-animated movies. As described, these failures can be probably attributed to the constraints posed by the physical world, but the failures itself is in some sense a signal that non-animated movies are not exploring the entire creative set of possibilities. I suspect films that use a lot of CGI, for instance, Life of Pi, would fair to a much better analysis based on these methods, and should inspire the larger Hollywood productions to adopt CGI to a greater extent.
+
+With all that said, I still hope my project inspires the audience to reconsider how they've looked at the particular films Akira and Ghost in the Shell, as I have, and reimagine the entire process of film analysis. With computers as our "bicycles for the mind", there is definitely a lot left to be done in the film department, and I hope that my analysis functions as a glimpse of that progress.
 
 \backmatter
+
+\chapter{Appendix A: Data}
+
+All visualisations displayed in this project are available as high-resolution images, along with the original \LaTeX~copy of this file, in this \href{https://www.dropbox.com/sh/s5srn4aef4t7g6a/AABVlTIXxdolSEPwUAI7LhqWa?dl=0}{Dropbox Folder}. I am not certain if publishing the original data used to generate the visualisations would be considered copyright infringement, so I will refrain from publishing it freely, but it is available on request. All the visualisations were made using a combination of Python, Julia and R (in particular, using the chromaR package). For more of my work, or to contact me, please visit the website \href{https://nibnalin.me}{nibnalin.me}.
+
+\phantomsection
+\renewcommand{\listfigurename}{Appendix B: List of Figures}
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY

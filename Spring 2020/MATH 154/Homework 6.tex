@@ -1,0 +1,181 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{seqsplit}
+\usepackage{hyperref}
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 6}
+\newcommand{\hmwkClass}{MATH 154}
+\newcommand{\hmwkClassInstructor}{Professor Kane}
+\newcommand{\hmwkAuthorName}{\textbf{Nalin Bhardwaj}}
+\newcommand{\hmwkAuthorID}{A16157819}
+\newcommand{\hmwkAuthorEmail}{nibnalin@ucsd.edu}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName \\ \hmwkAuthorID \\ \hmwkAuthorEmail}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section*{Question 1}
+	\begin{enumerate}[(a)]
+		\item Let us represent this tournament using a graph. Let each team be represented by a vertex, and each match between two teams be represented by an edge. Since we want to host match between all pairs of teams, this graph corresponds to the complete graph $K_n$, where $n$ = number of teams. Further, let each week be represented by a "color". Now, the optimal matchups for this tournament correspond to a minimum edge-coloring of this graph. In this graph, $degree(v) = n-1 \forall v$. Then, by Vizing's theorem, a minimum edge-coloring uses $\triangle(G)$ or  $\triangle(G)+1$ colors, which corresponds to $n-1$ or $n$ colors. Hence proved.
+		
+		\item 
+		
+		\subsection*{Show that for $n$ odd, there is no schedule for $n-1$ weeks}
+		
+		Let us assume, for the sake of contradiction, that there exists a coloring using $n-1$ colors. In this graph, since each node is connected to $n-1$ different edges, all edges connected to a node have a different color. Therefore, each color occurs exactly once in the set of colors of edges connected to every node. Therefore, counting the edges of a color, there must be $\frac{n}{2}$ edges of each color, since each edge has two endpoints, and is therefore double-counted in $n$. However, since n is odd, $\frac{n}{2} \notin \mathbb{Z}$. Therefore, we have reached a contradiction. There must be no colorings using only $n-1$ colors.
+
+		\subsection*{Show that for $n$ odd, every $n$ week schedule will have exactly one team sitting out each week}
+		
+		As seen previously, since a complete graph has ${n \choose 2} = 
+		\frac{n \cdot (n-1)}{2}$ edges and the graph is symmetric across all colors, if we permute the colors, we must obtain that each color's use is also symmetric. Therefore, for each of the $n$ colors, there must be $\frac{n-1}{2}$ edges of each colour. Since each edge is connected to two endpoints, each color is connected to $n-1$ vertices. Therefore, exactly one team (one vertex) sits out each week (for each color).
+		
+		\item
+		
+			Since for $n$ odd, we have shown that each color is not connected to exactly $1$ vertex, let us show that for every vertex in $K_n$ for $n$ odd, there is exactly one distinct missing color. Since each color is missing exactly one vertex, and further, every vertex is connected to $n-1$ different colors, there must be exactly one missing color, which must be distinct (since otherwise we contradict our previous result).
+			
+			Using this, for any $n \geq 2$ even, we know that the graph $K_{n-1}$ has a coloring with $n-1$ colors. Let us add a vertex $v$ to this graph, and for each edge $(v, u)$ where $u \in K_{n-1}$, let us color this edge with the one distinct missing color. Since these colors are distinct, $v$ is not connected to two edges of same color, and for any $u$, since the color was missing earlier, $u$ is also connected to exactly one edge with such a color.
+	\end{enumerate}
+
+\section*{Question 2}
+	\begin{enumerate}[(a)]
+		\item Let us proceed with the principle of mathematical induction on the number of colors, $n$.
+		
+		\subsection*{Base case: $n = 1$}
+			The map of a single country with a single region requires exactly 1 color.
+		
+		\subsection*{Inductive case: Generate a graph requiring $n$ colors}
+			Since, by the inductive hypothesis, we know that there exists a map such that it requires $n-1$ colors, let that map be $M$. Let us add a country to $M$ bordering any other country on the outermost edges of the map. Within this country, if each other country in $M$ were to have an isolated disconnected region, we cannot use any of the $n-1$ colors already used, and therefore, we must need $n$ colors. Please refer to image for visualisation of an example:
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.7\linewidth]{IMG_0508.jpg}
+				\caption{Country D needs a new 4-th color for a valid coloring}
+			\end{figure}
+		\item 
+		
+		\subsection*{Lemma 1: There must be a country in the map with degree $\leq 11$}
+		
+		Consider the dual graph $G$ of the map (treating each region as a distinct node). Since we know that for any planar graph, $e \leq 3 \cdot v - 6$ (where $e$ is the number of edges and $v$ is the number of vertices), in the dual graph, $e \leq 3 \cdot v - 6 \implies 2 \cdot e \leq 6 \cdot v - 12$. Using handshake lemma, the average degree of a vertex $\alpha$ is $\alpha \leq 6 - 12\cdot v$. Since there must be at least one vertex with degree $\leq \alpha$, $\delta(G) \leq 6 - 12 \cdot v$. Now, consider the graph $G'$ where each country is treated as a single vertex such that all surrounding regions (to either of the disconnected regions of a country) have an edge between them. In this graph, average degree $\beta \leq 2 \cdot \alpha$, since each vertex in $G'$ consists of edges of atmost two vertices in $G$. Then, $\delta(G') \leq 12 - 24 \cdot v \implies \delta(G') < 12$. Therefore, there must be a vertex with degree $< 12$.
+		
+		Now, let us proceed with the principle of mathematical induction in the dual graph on the number of vertices $n$.
+		
+		\subsubsection*{Base Case: $n = 1$}
+			In this case, we only need one color.
+		
+		\subsubsection*{Inductive case}
+			Consider the vertex corresponding to $\delta(G)$, which by lemma 1, $< 12$. By the inductive hypothesis, the graph $G' = G \setminus v$ is colorable using 12 colors. Then, let the colors of the vertices in $G$ be the same as $G'$. Since $v$ has at most 11 neighbours, there are at most 11 distinct colors it may not take. Therefore, there's at least $12 - 11 = 1$ color it may take to generate a valid coloring. Hence proved.
+			
+		\item		
+			In the dual graph of this map, we can see that each vertex is connected to each other vertex, therefore, it corresponds to $K_9$. Since $\chi(K_9) = 9$, at least 9 colors are required.
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.7\linewidth]{IMG_0509.jpg}
+				\caption{$K_9$}
+			\end{figure}
+	\end{enumerate}
+	
+\section*{Question 3}
+		Consider the bipartite graph with vertices $V = L \cup R$ where $L$ and $R$ are the left and right sides, respectively. In $L$, put all the diagonals corresponding to one direction, and in $R$, put all the diagonals corresponding to the other direction. Then, let bishops be represented by an edge, between a vertex in $L$ and a vertex in $R$ based on the diagonal they are on with respect to diagonal $L$ and $R$ respectively. Two cases arise, either all bishops can be put on $k-1$ diagonals, in which case the result follows, or the bishops are on at least $k$ distinct diagonals.
+		
+		In this case, in the graph, the minimum vertex cover is $k$. By Konig's theorem, then, the maximum matching in this graph is also $k$. Further, since we know that for each bishop, the sum of the lengths of its diagonals is at least $n$, then, ignoring intersections, the bishops can attack/reach $k \cdot n$ cells. To count intersections, we see that for any pair of bishops, they can attack at most 2 same cells (corresponding to 2 directions of their diagonals). However, we know that the maximum matching in our previously constructed graph is $k$, i.e. there are $k$ bishops placed such that their paths do not intersect. Therefore, there can be at most $2 \cdot k^2 - k^2$ cells that are overcounted previously. Therefore, the bishops can reach at least $k \cdot n - 2 \cdot k^2 + k^2 = k \cdot n - k^2$ cells.
+		
+		
+\section*{Question 4}
+	The Dragon Prince.
+\end{document}

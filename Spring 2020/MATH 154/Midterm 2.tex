@@ -110,18 +110,19 @@
 \pagebreak
 
 \section*{Question 1}
-	Let the number of vertices be $v$, edges be $e$ and faces be $f$. Further, let number of triangle faces be $x$ and square faces be $y$. Then, $x+y = f$. Then, for any vertex $a \in V$, note that $deg(a) = 5$. This is because each node is connected to 5 faces. Then, by the handshake lemma, $\sum_{a \in V} deg(v) = 2 \cdot e \implies e = \frac{5\cdot v}{2}$. Further, since triangles has 3 sides and a square has 4 sides, using the dual-handshake lemma, $\sum_{a \in F} sides(a) = 2 \cdot e \implies 3 \cdot x + 4 \cdot y = 5 \cdot v$. Now, since polyhedra are planar graphs, using euler's formula $v - e + f = 2 \implies v - \frac{5 \cdot v}{2} + f = 2 \implies f = x + y = 2 + \frac{3 \cdot v}{2}$. Using this system of two equations, we solve for the 2 variables: $3x+3y = 110*3$ and $3x+4y = 72*5$. Subtracting, $y = 30$. Plugging back in, $x = 110-30 = 80$. Therefore, polyhedra has $80$ triangle faces and $30$ square faces.
+	Let the number of vertices be $v$, edges be $e$ and faces be $f$. Further, let number of triangle faces be $x$ and square faces be $y$. Then, $x+y = f$. Then, for any vertex $a \in V$, since it is connected to exactly 5 faces, we have $deg(a) = 5$. Then, by the handshake lemma, $\sum_{a \in V} deg(v) = 2 \cdot e \implies e = \frac{5\cdot v}{2}$. Further, since triangles has 3 sides and a square has 4 sides, using the dual-handshake lemma, $\sum_{a \in F} sides(a) = 2 \cdot e \implies 3 \cdot x + 4 \cdot y = 5 \cdot v$. Now, since polyhedra are planar graphs, using euler's formula $v - e + f = 2 \implies v - \frac{5 \cdot v}{2} + f = 2 \implies f = x + y = 2 + \frac{3 \cdot v}{2}$. Plugging $v = 72$, we have a system of two equations, we solve for the 2 variables: $x+y = 110 \implies 3x+3y = 330$ and $3x+4y = 72*5 = 360$. Subtracting, $y = 30$. Plugging back in, $x = 110-30 = 80$. Therefore, the polyhedra has $80$ triangle faces and $30$ square faces.
 
 \section*{Question 2}
 	The set of nodes with color 1 is $\{A, E, F, H\}$.
+	
 	The set of nodes with color 2 is $\{B, C, D, G\}$.
+	
 	The set of nodes with color 3 is $\{I, J\}$.
 
 \section*{Question 3}
-		TODO
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.3\linewidth]{graphHW3.png}
+			\includegraphics[width=0.7\linewidth]{IMG_0484.jpg}
 		\end{figure}
 
 \section*{Question 4}
@@ -129,17 +130,22 @@
 	\subsection*{Lemma 1: For a complete graph $H$ and any graph $G'$, in any valid colouring of $H \cup G'$, for any $u, v \in V_H, color(u, H \cup G') \neq color(v, H \cup G')$. }
 		This is because for any $u, v \in V_H$, since $H$ is a complete subgraph, there is an edge between vertex $u$ and $v$. Therefore, any valid coloring cannot use the same color for both the vertices. \\
 		
-	WLOG, let $\chi(H \cup E) \leq \chi(H \cup F)$, because otherwise we can swap $E$ and $F$ to obtain the same result.
+	WLOG, let $\chi(H \cup E) \leq \chi(H \cup F)$.
 	
-	Now, consider the coloring of $H \cup E$ corresponding to $\chi(H \cup E)$. Using lemma 1, we know that for any $u, v \in V_H, color(u, H \cup E) \neq color(v, H \cup E)$. Therefore, each node $u \in V_H$ has a different color, i.e. $|\{color(u, H \cup E) \forall u \in V_H\}| = |V_H|$. WLOG, let the set of colors $\{color(u, H \cup E) \forall u \in V_H\}$ be the set $\{1, 2, \cdots , |V_H|\}$. This is always possible because we can just permute the set of colors so the labels/colors $\forall u \in V_H$ corresponds to $\{1, 2, \cdots , |V_H|\}$.
+	Consider the coloring of $H \cup E$ corresponding to $\chi(H \cup E)$. Using lemma 1, we know that for any $u, v \in V_H, color(u, H \cup E) \neq color(v, H \cup E)$. Therefore, each node $u \in V_H$ has a different color, i.e. $|\{color(u, H \cup E) \forall u \in V_H\}| = |V_H|$. WLOG, let the set of colors $\{color(u, H \cup E) \forall u \in V_H\}$ be the set $\{1, 2, \cdots , |V_H|\}$. This is always possible because we can just permute the set of colors so the labels/colors $\forall u \in V_H$ corresponds to $\{1, 2, \cdots , |V_H|\}$.
 	
-	Similarly, consider the coloring of $H \cup F$ corresponding to $\chi(H \cup F)$. Using the same reasoning as $H \cup E$, let the set of colors $\{color(u, H \cup F) \forall u \in V_H\}$ be the set $\{1, 2, \cdots , |V_H|\}$. Further, we can permute the set $\{color(u, H \cup F) \forall u \in V_H\}$ such that $color(u, H \cup E) = color(u, H \cup F) \quad \forall u \in V_H$. This is always possible because, using lemma 1, we can set the color of $u$ such that $color(u, H \cup E) = color(u, H \cup F)$ and permute the color of all vertices except $u$ to obtain an equivalent valid coloring. 
+	Similarly, using the same reasoning as $H \cup E$, in the coloring of $H \cup F$, let the set of colors $\{color(u, H \cup F) \forall u \in V_H\}$ be the set $\{1, 2, \cdots , |V_H|\}$. Further, we can permute the set $\{color(u, H \cup F) \forall u \in V_H\}$ such that $color(u, H \cup E) = color(u, H \cup F) \quad \forall u \in V_H$. This is always possible because we can set the color of $u$ such that $color(u, H \cup E) = color(u, H \cup F)$ and permute the color of all vertices to obtain an equivalent valid coloring. 
 	
-	Now, using these two independent colorings, we can obtain a coloring of $G$ based on three properties as $\forall u \in V_G$: If $u \in V_H$, then $color(u, G) = color(u, H \cup E) = color(u, H \cup F)$. Else if $u \in E$, $color(u, G) = color(u, H \cup E)$. Else, $u \in F$, and $color(u, G) = color(u, H \cup F)$. In this coloring, since there are no edges $(u, v)$ such that $u \in E$ and $v \in F$, the set of neighbours for any node $u \in E \cup F$ is the same as the previous coloring, where it had a valid color. For all nodes $u \in V_H$, since we obtained a coloring in both subgraphs $H \cup E$ and $H \cup F$ such that $u$ had the same color, it must be a valid color in $G = H \cup E \cup F$.
+	Now, using these two independent colorings, we can obtain a coloring of $G$ based on three possibilities $\forall u \in V_G$: If $u \in V_H$, then $color(u, G) = color(u, H \cup E) = color(u, H \cup F)$. Else if $u \in E$, $color(u, G) = color(u, H \cup E)$. Else, $u \in F$, and $color(u, G) = color(u, H \cup F)$. Since $E$ and $F$ are seperate components in $G \setminus H$, in this coloring, there are no edges $(u, v)$ such that $u \in E$ and $v \in F$. Som the set of neighbours for any node $u \in E \cup F$ is the same as the constituent colorings, where it had a valid color. For all nodes $u \in V_H$, since we obtained a coloring in both subgraphs $H \cup E$ and $H \cup F$ such that $u$ had the same color, it must be a valid color in $G = H \cup E \cup F$. So, we have a coloring of $G$ using $\chi(H \cup F)$ colors.
 	
-	Therefore, we have shown $\chi(G) \leq \chi(H \cup F)$.
+	We have thus shown $\chi(G) \leq \chi(H \cup F)$.
 	
-	Now, assume, for the sake of contradiction, that $\chi(G) < \chi(H \cup F)$. Then, consider the coloring of nodes in $G$ corresponding to $\chi(G)$. Since $H \cup F$ is an induced subgraph of $G$, any coloring valid in $G$ will also be valid in $H \cup F$. This is because the set of constraints defined by edges $E_{H \cup F} \subseteq E_{G}$. Therefore, we have obtained a coloring of $H \cup F$ such that we use fewer than $\chi(H \cup F)$ colors, which is a contradiction. Therefore, $\chi(G) \geq \chi(H \cup F)$.
+	Assume, for the sake of contradiction, that $\chi(G) < \chi(H \cup F)$. Then, consider the coloring of nodes in $G$ corresponding to $\chi(G)$. Since $H \cup F$ is an induced subgraph of $G$, any coloring valid in $G$ will also be valid in $H \cup F$. This is because the set of constraints defined by edges $E_{H \cup F} \subseteq E_{G}$. Therefore, we have obtained a coloring of $H \cup F$ such that we use fewer than $\chi(H \cup F)$ colors, which is a contradiction. Therefore, $\chi(G) \geq \chi(H \cup F)$.
 	
-	Combining the two equations, $\chi(G) = \chi(H \cup F)$ when $\chi(H \cup F) \geq \chi(H \cup E)$.
+	Combining results, $\chi(G) = \chi(H \cup F)$.
+
+\section*{Question 5}
+	I have permission to take the exam at a non-standard time.
+	
+	Start time: 7:30 AM Pacific Time. End time: 8:30 AM Pacific Time. Date: Saturday, May 23.
 \end{document}
